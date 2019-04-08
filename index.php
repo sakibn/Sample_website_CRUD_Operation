@@ -32,7 +32,7 @@
 <!--        </form>-->
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["includes/sign.inc.php"]);?>">
             <label>
-                <input type="text" placeholder="user name"/>
+                <input type="text" placeholder="username"/>
                 <input type="password" placeholder="password"/>
                 <button>Login</button>
             </label>
