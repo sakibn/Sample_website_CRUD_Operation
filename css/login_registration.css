@@ -1,0 +1,60 @@
+body{
+    background-color: black;
+    background-size: cover;
+    background-position: center;
+}
+.login-page{
+    width: 360px;
+    padding: 10% 0 0;
+    margin: auto;
+}
+.form{
+    position: relative;
+    z-index: 1;
+    background: white;
+    max-width: 360px;
+    padding: 4%;
+    /*margin: 0 auto 100px;*/
+    text-align: center;
+    /*top: 50%;*/
+}
+.form input{
+    font-family: "sans-serif", Calibri;
+    /*outline: 1;*/
+    background:darkgrey;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+.form button{
+    font-family: "sans-serif", Calibri;
+    text-transform: uppercase;
+    outline: 0;
+    background: #4CAF50;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    color: #ffffff;
+    font-size: 14px;
+    cursor: pointer;
+}
+.form button:hover, .form button:active{
+    background: #182931;
+}
+.form .message{
+    font-family: "sans-serif", Calibri;
+    margin: 15px 0 0;
+    color: black;
+    padding-bottom: 15px;
+}
+.form .message a{
+    font-family: "sans-serif", Calibri;
+    color: green;
+    text-decoration: none;
+}
+/*.form .register-form{*/
+/*    display: none;*/
+/*}*/
