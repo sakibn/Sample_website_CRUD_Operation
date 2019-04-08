@@ -8,16 +8,6 @@
 </head>
 <body>
 
-<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
-<!--//jquery-->
-<script>
-    $('.message a').click(function () {
-        $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
-    };
-</script>
-<!--<script>-->
-<!--    $(".message a").on('click',function(){ $("form").slideToggle(); });-->
-<!--</script>-->
 
 <div class="login-page">
     <div class="form">
@@ -30,7 +20,7 @@
 <!--            </label>-->
 <!--            <p class="message">Already Registered? <a href="">Login here</a></p>-->
 <!--        </form>-->
-        <form method="post" action="<?php echo htmlspecialchars($_SERVER["includes/sign.inc.php"]);?>">
+        <form method="post" action="includes/sign.inc.php">
             <label>
                 <input type="text" placeholder="username"/>
                 <input type="password" placeholder="password"/>
