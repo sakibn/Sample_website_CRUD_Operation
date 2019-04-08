@@ -7,6 +7,7 @@
 <!--    //This page was written with the help of https://youtu.be/GAOBXGPuKqo-->
 </head>
 <body>
+
 <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
 <!--//jquery-->
 <script>
@@ -29,13 +30,13 @@
 <!--            </label>-->
 <!--            <p class="message">Already Registered? <a href="">Login here</a></p>-->
 <!--        </form>-->
-        <form>
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER["includes/sign.inc.php"]);?>">
             <label>
                 <input type="text" placeholder="user name"/>
                 <input type="password" placeholder="password"/>
                 <button>Login</button>
             </label>
-            <p class="message">Not Registered? <a href="#">Register</a></p>
+            <p class="message">Not Registered? <a href=registration.html>Register</a></p>
         </form>
     </div>
 </div>
