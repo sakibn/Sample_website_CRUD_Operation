@@ -1,13 +1,18 @@
-<!--https://www.w3schools.com/php/php_form_validation.asp-->
 <?php
-$user_name = $password ="";
-if ($_SERVER['submit'] == 'POST'){
-    include_once 'dbh.inc.php';
-    $user_name =$_POST['username'];
-    $password =$_POST['password'];
-    echo $user_name;
-    echo $password;
-}else{
-    header("location: ../index.php");
-    exit();
+if (isset($_POST['singup-submit'])){
+    require 'dbh.inc.php';
+    $username=$_POST['username'];
+    $password=$_POST['pwd'];
+    $first=$_POST['first'];
+    $last=$_POST['last'];
+
+    if(empty($username) || empty($password) || empty($first) || empty($last)){
+        header("location: ../registration.php?error=emptyfields%username=".$username
+        ."&first=".$first."&last".last);
+        exit();
+    }
+    elseif (){
+        header("location: ../registration.php?error=invalidusername%username=".$username
+            ."&first=".$first."&last".last);
+    }
 }

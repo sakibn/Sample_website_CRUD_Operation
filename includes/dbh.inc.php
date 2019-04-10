@@ -1,29 +1,14 @@
+
 <?php
-$dbServerName="localhost";
-$dbUserName="carrental";
-$dbPassword="carrental";
-
-// Create connection
-$conn = mysqli_connect($dbServerName, $dbUserName, $dbPassword);
-
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
+$mysqli = new mysqli("localhost", "carrental", "carrental", "carrental");
+if ($mysqli->connect_errno) {
+    echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 }
+echo $mysqli->host_info . "\n";
 
-$stid = oci_parse($conn, 'SELECT * FROM employees');
-oci_execute($stid);
-echo "<table border='1'>\n";
-while ($row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS)) {
-    echo "<tr>\n";
-    foreach ($row as $item) {
-        echo " <td>" . ($item !== null ? htmlentities($item, ENT_QUOTES) : "&nbsp;") . "</td>\n";
-    }
-    echo "</tr>\n";
+$mysqli = new mysqli("127.0.0.1", "carrental", "carrental", "carrental", 3306);
+if ($mysqli->connect_errno) {
+    echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
 }
-echo "</table>\n";
+$mysqli->set_charset('utf8');
 
-
-
-// Close the Oracle connection
-oci_close($conn);
