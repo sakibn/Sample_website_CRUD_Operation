@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,10 +17,10 @@ V-haul
                 <li><a href="index.php">Home</a></li>
             </ul>
             <div class="nav-login">
-                <form>
+                <form action="includes/login.inc.php" method="post">
                     <input type="text" name="uid" placeholder="Username">
-                    <input type="text" name="pwd" placeholder="Password">
-                    <button type="submit" name="submit">Login</button>
+                    <input type="password" name="pwd" placeholder="Password">
+                    <button type="submit" name="login-submit">Login</button>
                 </form>
                 <a href="registration.php">Registration</a>
             </div>
