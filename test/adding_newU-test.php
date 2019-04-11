@@ -10,10 +10,12 @@ $password ="test";
 $first ="test";
 $last ="test";
 
-    if (empty($username) || empty($password) || empty($r_pass) || empty($first) || empty($last)) {
+    if (!isset($username) || isset($username) =='') {
 //        header("location: ../registration.php?error=emptyfields%username=" . $username . "&first=" . $first . "&last" . $last);
     echo $username.$password.$first.$last;
-        exit();}
+        exit();}else{
+        echo "working";
+    }
 
 //    } elseif (!preg_match("/^[a-zA-Z0-9*$/", $username)) {
 //        header("location: ../registration.php?error=invalidusername%first=" . $first . "&last" . $last);
