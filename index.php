@@ -15,7 +15,7 @@ require "header.php";
 <section class="main-container">
     <div class="main-wrapper">
         <h2>Home</h2>
-        <?php>
+        <?php
             $db=mysqli_connect("localhost","carrental","carrental");
 
             if (mysqli_connect_errno()){
