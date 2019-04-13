@@ -1,8 +1,11 @@
 <?php
-
+$row=[];
 if (isset($_POST['login-submit'])) {
     require 'dbh.inc.php';
-
+    if (mysqli_connect_errno()) {
+        printf("Connect failed: %s\n", mysqli_connect_error());
+        exit();
+    }
     $uid = test_input($_POST['uid']);
     $pwd = test_input($_POST['pwd']);
 
@@ -10,49 +13,39 @@ if (isset($_POST['login-submit'])) {
         header("Location: ../index.php?error=emptyfields");
         exit();
     } else {
-
-        $sql = "SELECT * FROM P_CUSTOMER WHERE username=?;";
-        $stmt = mysqli_stmt_init($conn); //initialized stmt
-        if (!mysqli_stmt_prepare($stmt, $sql)) {
-            header("Location: ../index.php?error=sqlerror");
+        $stmt = $conn-> prepare("SELECT pwd FROM P_CUSTOMER WHERE username=?;");
+//        print "working after the sql";
+        print "userID = ".$uid;
+        $stmt->bind_param("s", $uid);
+        print "working after the bind";
+        $stmt->execute();
+        print "working after the execute";
+        $result = "";
+        $stmt->bind_result($result);
+        echo "\nresult= ".$result;
+        echo "\nworking after bind and execute";
+        $stmt->fetch();
+        if ($pwd == $result) {
+            echo "verified";
+            session_start();
+            $_SESSION['username'] = $uid;
+//            $_SESSION['userId'] = $row['USER_ID'];
+            header("Location: ../index.php?login=success");
+            $stmt->close();
             exit();
         } else {
-            mysqli_stmt_bind_param($stmt, "s", $uid);
-            mysqli_stmt_execute($stmt);
-            echo "working after stmt execute";
-            $result = mysqli_stmt_get_result($stmt);
-            echo "working after get result";
-            echo $result;
-            if ($row = mysqli_fetch_assoc($result)) {
-                echo "working after fetch";
-                $pwdCheck = password_verify($pwd, $row['pwd']) ;
-                echo $pwdCheck;
-                echo "working after password verify";
-                if($pwdCheck ==false){
-                    header("Location: ../index.php?error=wrong_password");
-                    exit();
-                }elseif ($pwdCheck ==true){
-                    session_start();
-                    $_SESSION['username'] =$row['username'];
-                    $_SESSION['userId'] =$row['USER_ID'];
-                    header("Location: ../index.php?login=success");
-                    exit();
-                }else{
-                    header("Location: ../index.php?error=wrong_password");
-                    exit();
-                }
-            } else {
-                header("Location: ../index.php");
-                exit();
-            }
+            header("Location: ../index.php?login=fail");
+            $stmt->close();
+            exit();
         }
     }
+
 } else {
     header("Location: ../index.php");
     exit();
 }
 
-mysqli_close($conn);
+
 function test_input($data)
 {
     $data = trim($data);

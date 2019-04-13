@@ -225,3 +225,15 @@ header .nav-login a{
 .sign_up-form button:hover{
     background-color: #111;
 }
+
+.greetings{
+    position: relative;
+    right: auto;
+    left: -101px;
+    top: 27px;
+}
+.logout{
+    position: relative;
+    top: -33%;
+
+}
