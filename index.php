@@ -5,6 +5,12 @@
         border: 1px solid black;
         text-align: center;
     }
+    main-container{
+        text-align: center;
+        background-color: black;
+        color: red;
+        border: 1px, white;
+    }
 </style>
 </head>
 <body>
