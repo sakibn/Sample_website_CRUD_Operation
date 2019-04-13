@@ -3,11 +3,7 @@
 <head>
 </head>
 <body>
-    <?php
-    <ul>
-        <a href="header.php">haha</a>
-    </ul>
-    ?>
+
 <?php
 require "header.php";
 ?>
