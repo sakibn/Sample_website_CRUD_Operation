@@ -11,7 +11,7 @@ require "header.php";
     <div class="main-wrapper">
         <h2>Home</h2>
         <?php if(isset($_SESSION['username'])): ?>
-            <p>you are logged in</p>
+            <p>you are logged in or something like that</p>
             <ul>
                 <li><a href="database.php">Database/excel</a></li>
                 <li><a href="users.php">User access</a></li>
@@ -21,7 +21,7 @@ require "header.php";
         <?php else: ?>
             <p>you are logged out</p>
         
-        <?php endif; ?>
+        <?php endif; ?  >
     </div>
 </section>
 

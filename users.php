@@ -2,6 +2,7 @@
 <html>
 <head>
 </head>
+<?php require "dbh.inc.php";
 <body>
     <table>
         <th>User Email</th>

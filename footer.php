@@ -1,5 +1,5 @@
 <html>
 <body>
-    <p>Founded by Mohammad Malik and Nazmus Saqib</p>
+    <p style=text-align: center">Founded by Mohammad Malik and Nazmus Saqib</p>
 </body>
 </html>
