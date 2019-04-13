@@ -2,7 +2,7 @@
 <head>
 </head>
 <body>
-<?php require "dbh.inc.php";?>
+
     <table>
         <th>User Email</th>
         <th>Account Type</th>
