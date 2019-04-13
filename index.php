@@ -15,6 +15,13 @@ require "header.php";
         <?php
         if(isset($_SESSION['username'])){
             echo 'you are logged in';
+            <ul>
+                <li>Database/excel</li>
+                <li>User access</li>
+                <li>Available Inventory</li>
+                <li>Reservation Form</li>
+                <li>Account Settings</li>
+            </ul>
         }else{
             echo 'you are logged out';
         }
