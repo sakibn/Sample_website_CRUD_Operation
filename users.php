@@ -1,8 +1,12 @@
 <html>
 <head>
+    table, th, td {
+        border: 1px solid black;
+        text-align: center;
+    }
 </head>
 <body>
-    <table style=>
+    <table>
         <tr>
             <th>User Email</th>
             <th>Account Type</th>
