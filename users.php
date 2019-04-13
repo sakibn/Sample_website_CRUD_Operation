@@ -1,9 +1,13 @@
 <html>
 <head>
 <style>
-    table, th, td {
+    table, th {
         border: 1px solid black;
         text-align: center;
+    }
+
+    td{
+        text-align:right;
     }
 </style>
 </head>
