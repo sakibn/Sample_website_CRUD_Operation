@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
 </head>
@@ -16,11 +17,10 @@ require "header.php";
         if(isset($_SESSION['username'])){
             echo 'you are logged in';
             <ul>
-                <li>Database/excel</li>
-                <li>User access</li>
-                <li>Available Inventory</li>
-                <li>Reservation Form</li>
-                <li>Account Settings</li>
+                <li><a href="database.php">Database/excel</a></li>
+                <li><a href="users.php">User access</a></li>
+                <li><a href="inventory.php">Available Inventory</a></li>
+                <li><a href="reservation.php">Reservation Form</a></li>
             </ul>
         }else{
             echo 'you are logged out';
