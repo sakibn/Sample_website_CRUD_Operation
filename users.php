@@ -4,10 +4,7 @@
 </head>
 <?php require "dbh.inc.php";?>
 <body>
-<form name="my_form" method="post" action= addUser()>
-    User Name: <input type="text" name="username_add" placeholder="username"><br />
-    <input type="submit" name="btn_add" value="Add User" />
-</form>
+
     <table>
         <th>User Email</th>
         <th>Account Type</th>
