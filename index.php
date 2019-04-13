@@ -1,5 +1,6 @@
 <html>
 <head>
+<title>Yo Noid!</title>
 </head>
 <body>
 
@@ -9,15 +10,14 @@ require "header.php";
 <section class="main-container">
     <div class="main-wrapper">
         <h2>Home</h2>
-        <?php
-        if(isset($_SESSION['username'])){
+        <?php if(isset($_SESSION['username'])){
             echo 'you are logged in';
-            <ul>
-                <li><a href="database.php">Database/excel</a></li>
-                <li><a href="users.php">User access</a></li>
-                <li><a href="inventory.php">Available Inventory</a></li>
-                <li><a href="reservation.php">Reservation Form</a></li>
-            </ul>
+            echo '<ul>'
+            echo '<li><a href="database.php">Database/excel</a></li>'
+            echo '<li><a href="users.php">User access</a></li>'
+            echo '<li><a href="inventory.php">Available Inventory</a></li>'
+            echo '<li><a href="reservation.php">Reservation Form</a></li>'
+            echo '</ul>'
         }else{
             echo 'you are logged out';
         }
