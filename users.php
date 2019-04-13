@@ -9,7 +9,7 @@
 </head>
 <body>
 <?php
-$db=mysqli_connect("http://128.172.188.107/phpmyadmin","carrental","carrental");
+$db=mysqli_connect("localhost","carrental","carrental");
 
 if (mysqli_connect_errno())
 {
