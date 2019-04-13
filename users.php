@@ -73,6 +73,5 @@ mysqli_close($db);
             }
         }
 ?>
-<?php require "footer.php";?>
 </body>
 </html>
