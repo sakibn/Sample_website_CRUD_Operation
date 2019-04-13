@@ -1,3 +1,11 @@
+<html>
+<head>
+</head>
+<body>
+    <ul>
+        <a href="header.php">haha</a>
+    </ul>
+
 <?php
 require "header.php";
 ?>
@@ -6,7 +14,7 @@ require "header.php";
         <h2>Home</h2>
         <?php
         if(isset($_SESSION['username'])){
-            echo 'your are logged in';
+            echo 'you are logged in';
         }else{
             echo 'you are logged out';
         }
@@ -17,3 +25,5 @@ require "header.php";
 <?php
 require "footer.php";
 ?>
+</body>
+</html>
