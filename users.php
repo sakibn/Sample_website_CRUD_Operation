@@ -16,7 +16,10 @@
             <th>Actions</th>
         </tr>
         <tr>
-            <td><input type="button" value="edit permissions" onclick=editPermissions()/>,
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><input type="button" value="edit permissions" onclick=editPermissions()/>
             <input type="button" value="delete user" onclick=deleteUser()/> </td>
         </tr>
     </table>
