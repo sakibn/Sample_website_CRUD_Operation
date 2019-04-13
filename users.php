@@ -35,7 +35,7 @@ mysqli_close($db);
 ?>
     <table>
         <tr>
-            <th>User Email</th>
+            <th>Username</th>
             <th>Account Type</th>
             <th>Permissions</th>
             <th>Actions</th>
