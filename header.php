@@ -5,7 +5,7 @@ session_start();
 <html>
 <head>
     <title>
-        V-haul
+        Cartholemeu
     </title>
     <link rel="stylesheet" href="css/login_registration.css">
 </head>
