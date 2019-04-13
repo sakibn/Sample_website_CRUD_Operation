@@ -9,7 +9,6 @@
         text-align: center;
         background-color: black;
         color: red;
-        border: 1px, white;
     }
 </style>
 </head>
@@ -20,7 +19,7 @@ require "header.php";
 ?>
 <section id="c3" class="main-container">
     <div class="main-wrapper">
-        <h2>Home</h2>
+        <h2 style="color: red">Home</h2>
         
         <?php if(isset($_SESSION['username'])): ?>
             <ul>
