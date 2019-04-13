@@ -1,6 +1,5 @@
 <html>
 <head>
-<title>Yo Noid!</title>
 </head>
 <body>
 
@@ -21,7 +20,7 @@ require "header.php";
         <?php else: ?>
             <p>you are logged out</p>
         
-        <?php endif; ?  >
+        <?php endif; ?>
     </div>
 </section>
 
