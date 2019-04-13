@@ -31,7 +31,7 @@ if (isset($_POST['login-submit'])) {
             session_start();
             $_SESSION['username'] = $uid;
 //            $_SESSION['userId'] = $row['USER_ID'];
-            header("Location: welcome.php");
+            header("Location: index.php=login=succeeded");
             $stmt->close();
             exit();
         } else {
