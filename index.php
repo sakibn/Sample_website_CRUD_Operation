@@ -3,10 +3,6 @@
 <head>
 </head>
 <body>
-    <ul>
-        <a href="header.php">haha</a>
-    </ul>
-
 <?php
 require "header.php";
 ?>
@@ -16,12 +12,12 @@ require "header.php";
         <?php
         if(isset($_SESSION['username'])){
             echo 'you are logged in';
-            <ul>
-                <li><a href="database.php">Database/excel</a></li>
-                <li><a href="users.php">User access</a></li>
-                <li><a href="inventory.php">Available Inventory</a></li>
-                <li><a href="reservation.php">Reservation Form</a></li>
-            </ul>
+//            <ul>
+//                <li><a href="database.php">Database/excel</a></li>
+//                <li><a href="users.php">User access</a></li>
+//                <li><a href="inventory.php">Available Inventory</a></li>
+//                <li><a href="reservation.php">Reservation Form</a></li>
+//            </ul>
         }else{
             echo 'you are logged out';
         }
@@ -32,5 +28,4 @@ require "header.php";
 <?php
 require "footer.php";
 ?>
-</body>
-</html>
+
