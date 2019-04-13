@@ -1,5 +1,11 @@
 <html>
 <head>
+<style>
+    table, th, td {
+        border: 1px solid black;
+        text-align: center;
+    }
+</style>
 </head>
 <body>
 
@@ -17,28 +23,7 @@ require "header.php";
                 <li><a href="reservation.php">Reservation Form</a></li>
             </ul>        
         <?php endif; ?>
-        <?php if(!isset($_SESSION['username'])){
-                $db=mysqli_connect("localhost","carrental","carrental");
-
-                if (mysqli_connect_errno()){
-                    echo "Failed to connect to MySQL: " . mysqli_connect_error();
-                }
-
-                $result = mysqli_query($db,"SELECT * FROM P_CUSTOMERS");
-                $result2 = mysqli_query($db,"SELECT * FROM P_EMPLOYEES");
-
-                echo "<table border='1'>";
-                while($row = mysqli_fetch_array($result)){
-                    echo "<tr>";
-                    echo "<td>" . $row['Model'] . "</td>";
-                    echo "<td>" . $row['Shop Location'] . "</td>";
-                    echo "<td>" . $row['Mileage'] . "</td>";
-                    echo "</tr>";
-                }
-                echo "</table>";
-
-                mysqli_close($db);
-            }
+        
     </div>
 </section>
 </body>
