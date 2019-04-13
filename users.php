@@ -17,14 +17,21 @@ if (mysqli_connect_errno())
 }
 
 $result = mysqli_query($db,"SELECT * FROM P_CUSTOMERS");
+$result2 = mysqli_query($db,"SELECT * FROM P_EMPLOYEES");
 
+echo "<table border='1'>";
 while($row = mysqli_fetch_array($result))
 {
-
+    echo "<tr>";
+    echo "<td>" . $row['Username'] . "</td>";
+    echo "<td>" . $row['Account Type'] . "</td>";
+    echo "<td>" . $row['Permissions'] . "</td>";
+    echo "<td>" . $row['Actions'] . "</td>";
+    echo "</tr>";
 }
 echo "</table>";
 
-mysqli_close($con);
+mysqli_close($db);
 ?>
     <table>
         <tr>
