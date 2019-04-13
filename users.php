@@ -9,14 +9,14 @@
 </head>
 <body>
 <?php
-$con=mysqli_connect("http://128.172.188.107/phpmyadmin/","carrental","carrental","carrental");
-// Check connection
+$db=mysqli_connect("http://128.172.188.107/phpmyadmin","carrental","carrental");
+
 if (mysqli_connect_errno())
 {
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
-$result = mysqli_query($con,"SELECT * FROM P_CUSTOMERS");
+$result = mysqli_query($db,"SELECT * FROM P_CUSTOMERS");
 
 while($row = mysqli_fetch_array($result))
 {
