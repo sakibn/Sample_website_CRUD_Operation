@@ -5,7 +5,7 @@
         border: 1px solid black;
         text-align: center;
     }
-    main-container{
+    #c3{
         text-align: center;
         background-color: black;
         color: red;
@@ -18,7 +18,7 @@
 <?php
 require "header.php";
 ?>
-<section class="main-container">
+<section id="c3" class="main-container">
     <div class="main-wrapper">
         <h2>Home</h2>
         
