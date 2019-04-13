@@ -1,13 +1,9 @@
 <html>
 <head>
 <style>
-    table, th {
+    table, th, td {
         border: 1px solid black;
         text-align: center;
-    }
-
-    td{
-        text-align:left;
     }
 </style>
 </head>
@@ -20,8 +16,8 @@
             <th>Actions</th>
         </tr>
         <tr>
-            <td><input type="button" value="edit permissions" onclick=editPermissions()/> </td>
-            <td><input type="button" value="delete user" onclick=deleteUser()/> </td>
+            <td><input type="button" value="edit permissions" onclick=editPermissions()/>,
+            <input type="button" value="delete user" onclick=deleteUser()/> </td>
         </tr>
     </table>
     <?php   function editPermissions(){
