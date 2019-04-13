@@ -16,7 +16,7 @@ session_start();
             <ul>
                 <li><a href="index.php">Home</a></li>
             </ul>
-            <div class="nav-login">
+            <span class="nav-login">
                 <?php
                 if (isset($_SESSION['username'])) {
                     echo ' <h1  class="greetings"> Hello '.$_SESSION['username'].'</h1>
@@ -35,7 +35,7 @@ session_start();
                 }
                 ?>
 
-            </div>
+            </span>
         </div>
     </nav>
 </header>
