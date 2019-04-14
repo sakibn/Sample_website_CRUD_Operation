@@ -3,6 +3,15 @@
     <link rel="stylesheet" href="tables.css">
 </head>
 <body>
+<div class="header">
+  <h1>Header</h1>
+</div>
+
+<div class="topnav">
+  <a href="#">Home</a>
+  <a href="#">Inventory</a>
+  <a href="#">Reservation</a>
+</div>
 <?php
 $db=mysqli_connect("localhost","carrental","carrental");
 
@@ -68,14 +77,5 @@ mysqli_close($db);
             }
         }
 ?>
-<div class="header">
-  <h1>Header</h1>
-</div>
-
-<div class="topnav">
-  <a href="#">Home</a>
-  <a href="#">Inventory</a>
-  <a href="#">Reservation</a>
-</div>
 </body>
 </html>
