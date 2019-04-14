@@ -28,7 +28,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>
     </p>
     <div class="header">
-  <h1>Header</h1>
+  <h1>H</h1>
 </div>
 
 <div class="topnav">

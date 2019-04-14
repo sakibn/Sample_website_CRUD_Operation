@@ -42,13 +42,12 @@ body {
 </head>
 <body>
 <div class="header">
-  <h1>Header</h1>
+  <h1>Inventory</h1>
 </div>
 
 <div class="topnav">
-  <a href="#">Home</a>
-  <a href="#">Inventory</a>
-  <a href="#">Reservation</a>
+  <a href="index.php">Home</a>
+  <a href="reservation.php">Reservation</a>
 </div>
 <?php
 $db=mysqli_connect("localhost","carrental","carrental");

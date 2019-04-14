@@ -46,13 +46,13 @@ body {
 <body>
 
 <div class="header">
-  <h1>Header</h1>
+  <h1>Reservation</h1>
+  <h3>Recieve your car from Cartholemeu Today!</h3>
 </div>
 
 <div class="topnav">
-  <a href="#">Home</a>
-  <a href="#">Inventory</a>
-  <a href="#">Reservation</a>
+  <a href="index.php">Home</a>
+  <a href="inventory.php">Inventory</a>
 </div>
 
 </body>
