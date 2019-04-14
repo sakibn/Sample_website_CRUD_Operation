@@ -28,6 +28,10 @@
         border-bottom: none;
     }
 
+    h2{
+        color: green;
+    }
+
     li a:hover{
         background-color: #555;
         color: white;
