@@ -1,0 +1,14 @@
+table th td{
+    display: block;
+    border: 1px solid black;
+    color: white;
+    text-align: center;
+}
+a:hover{
+    bacground-color: teal;
+}
+li{
+    display:block;
+    color: white;
+    border-bottom: 1px solid black;
+}

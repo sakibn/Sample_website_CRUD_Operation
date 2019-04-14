@@ -1,11 +1,6 @@
 <html>
 <head>
-<style>
-    table, th, td {
-        border: 1px solid black;
-        text-align: center;
-    }
-</style>
+    <link rel="stylesheet" href="tables.css">
 </head>
 <body>
 <?php
