@@ -8,7 +8,7 @@ if (isset($_POST['login-submit'])) {
         exit();
     }
     $uid = test_input($_POST['uid']);
-    $pwd = test_input($_POST['pwd']);
+    $pwd = sha256(test_input($_POST['pwd']));
 
     if (empty($uid) || empty($pwd)) {
         header("Location: ../index.php?error=emptyfields");

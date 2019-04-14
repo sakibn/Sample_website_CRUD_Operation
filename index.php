@@ -10,6 +10,31 @@
         background-color: black;
         color: red;
     }
+    ul{
+        list=style-type: none;
+        margin: 0;
+        padding: 0;
+        border: 1px solid #555;
+    }
+    li{
+        text-align: center;
+        border-bottom: 1px solid #555;
+    }
+    li:last-child{
+        border-bottom: none;
+    }
+    li a{
+        display: black;
+        width: 60px;
+    }
+    li a:hover{
+        background-color: #555;
+        color: white;
+    }
+    .active{
+        background-color: #4CAF50;
+        color: white;
+    }
 </style>
 </head>
 <body>
