@@ -10,7 +10,7 @@ if (isset($_POST['login-submit'])) {
     $uid = test_input($_POST['uid']);
     $pwd = test_input($_POST['pwd']);
     $hash = password_hash($pwd, PASSWORD_DEFAULT);
-    console.log($hash);
+    echo($hash);
 
     if (empty($uid) || empty($pwd)) {
         header("Location: ../index.php?error=emptyfields");
