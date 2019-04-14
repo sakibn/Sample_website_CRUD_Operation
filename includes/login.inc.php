@@ -8,9 +8,8 @@ if (isset($_POST['login-submit'])) {
         exit();
     }
     $uid = test_input($_POST['uid']);
-    $pwd = test_input($_POST['pwd']);
+    $pwd = $_POST['pwd'];
     $hash = password_hash($pwd, PASSWORD_DEFAULT);
-    echo($hash);
 
     if (empty($uid) || empty($pwd)) {
         header("Location: ../index.php?error=emptyfields");
@@ -30,7 +29,6 @@ if (isset($_POST['login-submit'])) {
         $stmt->fetch();
         if (password_verify($pwd, $hash)) {
             echo "verified";
-            console.log($hash);
             session_start();
             $_SESSION['username'] = $uid;
 //            $_SESSION['userId'] = $row['USER_ID'];
@@ -38,7 +36,7 @@ if (isset($_POST['login-submit'])) {
             $stmt->close();
             exit();
         } else {
-            header("Location: ../index.php?login=fail");
+            header("Location: ../index.php");
             $stmt->close();
             exit();
         }
