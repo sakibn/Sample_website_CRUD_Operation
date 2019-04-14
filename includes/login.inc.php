@@ -8,8 +8,9 @@ if (isset($_POST['login-submit'])) {
         exit();
     }
     $uid = test_input($_POST['uid']);
-    $pwd = sha256(test_input($_POST['pwd']));
-    console.log($pwd);
+    $pwd = test_input($_POST['pwd']);
+    $hash = password_hash($pwd, PASSWORD_DEFAULT);
+    console.log($hash);
 
     if (empty($uid) || empty($pwd)) {
         header("Location: ../index.php?error=emptyfields");
@@ -27,7 +28,7 @@ if (isset($_POST['login-submit'])) {
         echo "\nresult= ".$result;
         echo "\nworking after bind and execute";
         $stmt->fetch();
-        if ($pwd == $result) {
+        if ($hash == $result) {
             echo "verified";
             session_start();
             $_SESSION['username'] = $uid;
