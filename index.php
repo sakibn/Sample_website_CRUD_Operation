@@ -29,7 +29,7 @@
     }
 
     h2{
-        color: green;
+        color: green !important;
     }
 
     li a:hover{
