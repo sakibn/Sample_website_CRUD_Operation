@@ -10,19 +10,22 @@
         list=style-type: none;
         margin: 0;
         padding: 0;
+        width: 200px;
         border: 1px solid #555;
-    }
-    li{
-        text-align: center;
-        border-bottom: 1px solid #555;
-    }
-    li:last-child{
-        border-bottom: none;
     }
     li a{
         display: black;
         width: 60px;
     }
+    li{
+        text-align: center;
+        list-style-type: none;
+        border-bottom: 1px solid #555;
+    }
+    li:last-child{
+        border-bottom: none;
+    }
+
     li a:hover{
         background-color: #555;
         color: white;
