@@ -43,7 +43,7 @@
 require "header.php";
 ?>
 <section id="c3" class="main-container" style="background: white">
-    <div class="main-wrapper">
+    <div class="main-wrapper" style ="background: white">
         <h2 style="color: red">Home</h2>
         
         <?php if(isset($_SESSION['username'])): ?>
