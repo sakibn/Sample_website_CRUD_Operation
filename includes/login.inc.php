@@ -28,8 +28,9 @@ if (isset($_POST['login-submit'])) {
         echo "\nresult= ".$result;
         echo "\nworking after bind and execute";
         $stmt->fetch();
-        if ($hash == $result) {
+        if (password_verify($pwd, $hash)) {
             echo "verified";
+            console.log($hash);
             session_start();
             $_SESSION['username'] = $uid;
 //            $_SESSION['userId'] = $row['USER_ID'];
