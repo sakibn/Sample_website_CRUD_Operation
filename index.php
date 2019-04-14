@@ -14,12 +14,13 @@
         border: 1px solid #555;
     }
     li a{
-        display: black;
-        width: 60px;
+        display: block;
+        color: #000;
+        padding: 8px 16px;
+        text-decoration: none;
     }
     li{
         text-align: center;
-        list-style-type: none;
         border-bottom: 1px solid #555;
     }
     li:last-child{
@@ -30,8 +31,8 @@
         background-color: #555;
         color: white;
     }
-    .active{
-        background-color: #4CAF50;
+    li a:hover:not(.active){
+        background-color: #555;
         color: white;
     }
 </style>
