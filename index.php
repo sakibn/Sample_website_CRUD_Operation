@@ -5,11 +5,7 @@
         border: 1px solid black;
         text-align: center;
     }
-    #c3{
-        text-align: center;
-        background-color: black;
-        color: red;
-    }
+    
     ul{
         list=style-type: none;
         margin: 0;
