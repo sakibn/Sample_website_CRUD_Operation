@@ -4,7 +4,7 @@
 </head>
 <body>
 <div class="header">
-  <h1>Header</h1>
+  <h1>Users</h1>
 </div>
 
 <div class="topnav">
@@ -12,6 +12,9 @@
   <a href="inventory.php">Inventory</a>
   <a href="reservation.php">Reservation</a>
 </div>
+
+<hr>
+
 <?php
 $db=mysqli_connect("localhost","carrental","carrental");
 

@@ -42,8 +42,8 @@
 <?php
 require "header.php";
 ?>
-<section id="c3" class="main-container" style="background: white">
-    <div class="main-wrapper" style ="background: white">
+<section id="c3" class="main-container">
+    <div class="main-wrapper">
         <h2 style="color: red">Home</h2>
         
         <?php if(isset($_SESSION['username'])): ?>
