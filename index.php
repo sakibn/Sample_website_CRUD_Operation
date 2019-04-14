@@ -43,8 +43,8 @@
 <?php
 require "header.php";
 ?>
-<!--section id="c3" class="main-container">
-    <div class="main-wrapper"-->
+<section id="c3" class="main-container">
+    <div class="main-wrapper">
         <h2 style="color: red">Home</h2>
         
         <?php if(isset($_SESSION['username'])): ?>
@@ -56,7 +56,7 @@ require "header.php";
             </ul>
         <?php endif; ?>
         
-    <!--/div>
-</section-->
+    </div>
+</section>
 </body>
 </html>
