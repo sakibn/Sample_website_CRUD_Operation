@@ -27,11 +27,6 @@
     li:last-child{
         border-bottom: none;
     }
-
-    h2{
-        color: green !important;
-    }
-
     li a:hover{
         background-color: #555;
         color: white;
@@ -47,7 +42,7 @@
 <?php
 require "header.php";
 ?>
-<section id="c3" class="main-container">
+<section id="c3" class="main-container" style="background: white">
     <div class="main-wrapper">
         <h2 style="color: red">Home</h2>
         
