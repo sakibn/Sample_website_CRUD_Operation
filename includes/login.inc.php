@@ -1,6 +1,6 @@
 
 <?php
-$row=[];
+
 if (isset($_POST['login-submit'])) {
     require 'dbh.inc.php';
     if (mysqli_connect_errno()) {
@@ -8,8 +8,7 @@ if (isset($_POST['login-submit'])) {
         exit();
     }
     $uid = test_input($_POST['uid']);
-    $pwd = $_POST['pwd'];
-    $hash = password_hash($pwd, PASSWORD_DEFAULT);
+    $pwd = test_input($_POST['pwd']);
 
     if (empty($uid) || empty($pwd)) {
         header("Location: ../index.php?error=emptyfields");
@@ -37,20 +36,6 @@ if (isset($_POST['login-submit'])) {
         } else {
             $stmt = $conn->prepare("SELECT pwd FROM P_CUSTOMER WHERE username=?;");
 //        print "working after the sql";
-        print "userID = ".$uid;
-        $stmt->bind_param("s", $uid);
-        print "working after the bind";
-        $stmt->execute();
-        print "working after the execute";
-        $result = "";
-        $stmt->bind_result($result);
-        echo "\nresult= ".$result;
-        echo "\nworking after bind and execute";
-        $stmt->fetch();
-        if (password_verify($pwd, $hash)) {
-            echo "verified";
-            session_start();
-            $_SESSION['username'] = $uid;
             print "userID = " . $uid;
             $stmt->bind_param("s", $uid);
             print "working after the bind";
@@ -66,13 +51,6 @@ if (isset($_POST['login-submit'])) {
                 session_start();
                 $_SESSION['username'] = $uid;
 //            $_SESSION['userId'] = $row['USER_ID'];
-            header("Location: index.php=login=succeeded");
-            $stmt->close();
-            exit();
-        } else {
-            header("Location: ../index.php");
-            $stmt->close();
-            exit();
                 header("Location: ../index.php?login=success");
                 $stmt->close();
                 exit();
@@ -89,7 +67,9 @@ if (isset($_POST['login-submit'])) {
     exit();
 }
 
+function login_redirect($uid){
 
+}
 function test_input($data)
 {
     $data = trim($data);
