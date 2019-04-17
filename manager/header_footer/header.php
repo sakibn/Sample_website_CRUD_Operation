@@ -19,7 +19,7 @@ session_start();
             <div class="nav-login">
                 <?php
                 if (isset($_SESSION['username'])) {
-                    echo ' <h1  class="greetings"> Hello '.$_SESSION['username'].'</h1>
+                    echo '
                 <form action="../includes/logout.inc.php" method="post">
                     <button style="position: relative;top: -11px;left: -11px;" type="submit" name="logout-submit" class="greetings">Logout</button>                 
                 </form>';

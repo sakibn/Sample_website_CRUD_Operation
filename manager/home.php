@@ -1,16 +1,23 @@
 <?php
+define('MyConst', TRUE);
 require "header_footer/header.php";
+//require "";
+if($_SESSION['username']!= 'manager'){
+    header("location: ../index.php?error=wrong_place");
+}
 ?>
 <section class="main-container">
     <div class="main-wrapper">
-        <h2>Home</h2>
-        <?php
-        if(isset($_SESSION['username'])){
-            echo 'you are logged in';
-        }else{
-            echo 'you are logged out';
-        }
-        ?>
+        <h2>Add new Employee</h2>
+        <form method="POST" class="sign_up-form" action=required_files/adding_employees.php >
+            <input type="text" name="username" placeholder="Username">
+            <input type="password" name="pwd" placeholder="Password">
+            <input type="password" name="pwd_r" placeholder="Retype Password">
+            <input type="text" name="first" placeholder="Firstname">
+            <input type="text" name="last" placeholder="Lastname">
+            <input type="text" name="last" placeholder="Lastname">
+            <button type="submit" name="signup-submit">Register</button>
+        </form>
     </div>
 </section>
 
