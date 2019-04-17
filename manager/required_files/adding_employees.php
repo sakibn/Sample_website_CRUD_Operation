@@ -35,6 +35,8 @@ if(isset($_POST['signup-submit'])){
     $stmt-> execute();
     $stmt->bind_result($result);
     echo $result;
+    echo "result is ".$result;
+    echo "username is ".$username;
     if($username == $result){
         echo 'verified';
         header("Location: ../home.php?user-already-exist");
