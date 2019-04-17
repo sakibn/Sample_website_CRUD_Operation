@@ -3,8 +3,8 @@ $username = $password = $r_pass = $first = $last = "";
 if (isset($_POST['signup-submit'])) {
     require 'dbh.inc.php';
     $username = test_input($_POST['username']);
-    $password = test_input($_POST['pwd']);
-    $r_pass = test_input($_POST['r-pwd']);
+    $password = test_input(hash('sha256', $_POST['pwd']));
+    $r_pass = test_input(hash('sha256', $_POST['r-pwd'])); 
     $first = test_input($_POST['first']);
     $last = test_input($_POST['last']);
 //    if (empty($_POST['username'])|| empty($_POST['pwd']) || empty($_POST['r-pwd']) || empty($_POST['first'])|| empty($_POST['last'])) {
