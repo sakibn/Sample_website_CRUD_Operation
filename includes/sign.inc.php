@@ -7,6 +7,8 @@ if (isset($_POST['signup-submit'])) {
     $r_pass = test_input(hash('sha256', $_POST['r-pwd'])); 
     $first = test_input($_POST['first']);
     $last = test_input($_POST['last']);
+    echo $password;
+    echo $r_pass;
 //    if (empty($_POST['username'])|| empty($_POST['pwd']) || empty($_POST['r-pwd']) || empty($_POST['first'])|| empty($_POST['last'])) {
 //        header("location: ../registration.php?error=emptyfield1%first=" . $first . "&last=" . $last);
 //        exit();
