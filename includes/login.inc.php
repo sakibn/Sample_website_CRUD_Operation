@@ -50,7 +50,7 @@ if (isset($_POST['login-submit'])) {
                 echo "verified";
                 session_start();
                 $_SESSION['username'] = $uid;
-//            $_SESSION['userId'] = $row['USER_ID'];
+//              $_SESSION['userId'] = $row['USER_ID'];
                 header("Location: ../index.php?login=success");
                 $stmt->close();
                 exit();

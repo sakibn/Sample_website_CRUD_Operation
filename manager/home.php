@@ -15,7 +15,6 @@ if($_SESSION['username']!= 'manager'){
             <input type="password" name="pwd_r" placeholder="Retype Password">
             <input type="text" name="first" placeholder="Firstname">
             <input type="text" name="last" placeholder="Lastname">
-            <input type="text" name="last" placeholder="Lastname">
             <button type="submit" name="signup-submit">Register</button>
         </form>
     </div>
