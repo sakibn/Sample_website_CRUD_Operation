@@ -11,6 +11,7 @@ $stmt =$conn -> prepare("SELECT pwd FROM P_CUSTOMER WHERE username=?;");
     /* Bind parameters: s - string, b - blob, i - int, etc */
     $stmt ->bind_param("s", $user_id );
     echo 'working';
+
     $stmt ->execute();
     $stmt ->bind_result($result);
     echo "\nresult= ".$result;
