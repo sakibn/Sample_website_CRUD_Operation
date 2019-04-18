@@ -1,4 +1,3 @@
-
 <?php
 
 if (isset($_POST['login-submit'])) {
@@ -9,7 +8,7 @@ if (isset($_POST['login-submit'])) {
     }
     $uid = test_input($_POST['uid']);
     $pwd = test_input($_POST['pwd']);
-
+    $hash =(hash('sha256', $pwd));
     if (empty($uid) || empty($pwd)) {
         header("Location: ../index.php?error=emptyfields");
         exit();
@@ -17,16 +16,16 @@ if (isset($_POST['login-submit'])) {
         $stmt = $conn->prepare("SELECT pwd FROM P_EMPLOYEES WHERE USERNAME=?;");
         print "userID = " . $uid;
         $stmt->bind_param("s", $uid);
-        print "working after the bind";
+//        print "working after the bind";
         $stmt->execute();
-        print "working after the execute";
+//        print "working after the execute";
         $result = "";
         $stmt->bind_result($result);
         echo "\nresult= " . $result;
-        echo "\nworking after bind and execute";
+//        echo "\nworking after bind and execute";
         $stmt->fetch();
-        if ($pwd == $result) {
-            echo "verified";
+        if ($hash == $result) {
+//            echo "verified";
             session_start();
             $_SESSION['username'] = $uid;
 //            $_SESSION['userId'] = $row['USER_ID'];
@@ -38,24 +37,24 @@ if (isset($_POST['login-submit'])) {
 //        print "working after the sql";
             print "userID = " . $uid;
             $stmt->bind_param("s", $uid);
-            print "working after the bind";
+//            print "working after the bind";
             $stmt->execute();
-            print "working after the execute";
+//            print "working after the execute";
             $result = "";
             $stmt->bind_result($result);
-            echo "\nresult= " . $result;
-            echo "\nworking after bind and execute";
+//            echo "\nresult= " . $result;
+//            echo "\nworking after bind and execute";
             $stmt->fetch();
-            if ($pwd == $result) {
+            if ($hash == $result) {
                 echo "verified";
                 session_start();
                 $_SESSION['username'] = $uid;
 //              $_SESSION['userId'] = $row['USER_ID'];
-                header("Location: ../index.php?login=success");
+//                header("Location: ../index.php?login=success");
                 $stmt->close();
                 exit();
             } else {
-                header("Location: ../index.php?login=fail");
+                header("Location: ../index.php?login=fail-on-customer");
                 $stmt->close();
                 exit();
             }
@@ -67,9 +66,11 @@ if (isset($_POST['login-submit'])) {
     exit();
 }
 
-function login_redirect($uid){
+function login_redirect($uid)
+{
 
 }
+
 function test_input($data)
 {
     $data = trim($data);

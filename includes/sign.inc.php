@@ -44,7 +44,7 @@ if (isset($_POST['signup-submit'])) {
             } else {
 //                    $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
 
-                if (!mysqli_stmt_bind_param($stmt, "ssss", $username, $password, $first, $last)) {
+                if (!mysqli_stmt_bind_param($stmt, "ssss", $username, $hash, $first, $last)) {
                     echo "error in binding";
                 }
                 if (!mysqli_stmt_execute($stmt)) {
