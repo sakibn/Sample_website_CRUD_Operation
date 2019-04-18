@@ -23,6 +23,7 @@ if (isset($_POST['signup-submit'])) {
 //        exit();
 //    }
 //        else {
+    $hash =hash('sha256', $password);
     $sql = "select username from P_CUSTOMER where username=?";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -45,7 +46,7 @@ if (isset($_POST['signup-submit'])) {
             } else {
 //                    $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
 
-                if (!mysqli_stmt_bind_param($stmt, "ssss", $username, $password, $first, $last)) {
+                if (!mysqli_stmt_bind_param($stmt, "ssss", $username, $hash, $first, $last)) {
                     echo "error in binding";
                 }
                 if (!mysqli_stmt_execute($stmt)) {
