@@ -1,27 +1,27 @@
 <?php
-$username = $password = $r_pass = $first = $last = "";
+//$username = $password = $r_pass = $first = $last = "";
 if (isset($_POST['signup-submit'])) {
     require 'dbh.inc.php';
     $username = test_input($_POST['username']);
-    $password = test_input(hash('sha256', $_POST['pwd']));
-    $r_pass = test_input(hash('sha256', $_POST['r-pwd']));
+    $password = test_input( $_POST['pwd']);
+    $r_pass = test_input($_POST['r-pwd']);
     $first = test_input($_POST['first']);
     $last = test_input($_POST['last']);
     echo $password;
     echo $r_pass;
-    if (empty($_POST['username']) || empty($_POST['pwd']) || empty($_POST['r-pwd']) || empty($_POST['first']) || empty($_POST['last'])) {
-        header("location: ../registration.php?error=emptyfield");
-        exit();
-    }
-    if (!preg_match("/^[a-zA-Z0-9*$/", $username)) {
-        header("location: ../registration.php?error=invalidusername");
-        exit();
-    }
-    if ($password !== $r_pass) {
-        header("location: ../registration.php?error=passwordcheck");
-        exit();
-    }
-
+//    if (empty($username) || empty($password) || empty($r_pass) || empty($first) || empty($last)) {
+//        header("location: ../registration.php?error=emptyfield");
+//        exit();
+//    }
+//    if (!preg_match("/^[a-zA-Z0-9*$/", $username)) {
+//        header("location: ../registration.php?error=invalidusername");
+//        exit();
+//    }
+//    if ($password !== $r_pass) {
+//        header("location: ../registration.php?error=passwordcheck");
+//        exit();
+//    }
+    $hash =hash('sha256', $password);
     $sql = "select username from P_CUSTOMER where username=?";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -60,7 +60,7 @@ if (isset($_POST['signup-submit'])) {
 
     mysqli_stmt_close($stmt);
 } else {
-    header("Location: ../index.php");
+//    header("Location: ../index.php");
     exit();
 }
 

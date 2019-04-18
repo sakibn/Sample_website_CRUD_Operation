@@ -19,9 +19,8 @@ if (isset($_POST['login-submit'])) {
 //        print "working after the bind";
         $stmt->execute();
 //        print "working after the execute";
-        $result = "";
         $stmt->bind_result($result);
-        echo "\nresult= " . $result;
+        //echo "\nresult= " . $result;
 //        echo "\nworking after bind and execute";
         $stmt->fetch();
         if ($hash == $result) {
@@ -40,20 +39,22 @@ if (isset($_POST['login-submit'])) {
 //            print "working after the bind";
             $stmt->execute();
 //            print "working after the execute";
-            $result = "";
+            //$result = "";
             $stmt->bind_result($result);
 //            echo "\nresult= " . $result;
 //            echo "\nworking after bind and execute";
             $stmt->fetch();
             if ($hash == $result) {
-                echo "verified";
+//                echo "verified";
                 session_start();
                 $_SESSION['username'] = $uid;
 //              $_SESSION['userId'] = $row['USER_ID'];
-//                header("Location: ../index.php?login=success");
+                header("Location: ../index.php?login=success");
                 $stmt->close();
                 exit();
             } else {
+//                echo "<br>result: ".$result;
+//                echo "<br>hashed: ".$hash;
                 header("Location: ../index.php?login=fail-on-customer");
                 $stmt->close();
                 exit();
