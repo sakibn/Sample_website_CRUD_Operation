@@ -14,15 +14,16 @@ if (isset($_POST['login-submit'])) {
         exit();
     } else {
         $stmt = $conn->prepare("SELECT pwd FROM P_EMPLOYEES WHERE USERNAME=?;");
-        print "userID = " . $uid;
+//        print "userID = " . $uid;
         $stmt->bind_param("s", $uid);
 //        print "working after the bind";
         $stmt->execute();
 //        print "working after the execute";
-        $stmt->bind_result($result);
-        //echo "\nresult= " . $result;
 //        echo "\nworking after bind and execute";
+        $stmt->bind_result($result);
         $stmt->fetch();
+//        echo "\nresult= " . $result;
+//        echo "<br> hash:".$hash;
         if ($hash == $result) {
 //            echo "verified";
             session_start();
@@ -34,7 +35,7 @@ if (isset($_POST['login-submit'])) {
         } else {
             $stmt = $conn->prepare("SELECT pwd FROM P_CUSTOMER WHERE username=?;");
 //        print "working after the sql";
-            print "userID = " . $uid;
+//            print "userID = " . $uid;
             $stmt->bind_param("s", $uid);
 //            print "working after the bind";
             $stmt->execute();

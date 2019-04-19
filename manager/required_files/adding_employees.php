@@ -11,8 +11,6 @@ if(isset($_POST['signup-submit'])){
     if (mysqli_connect_errno()) {
         printf("Connect failed: %s\n", mysqli_connect_error());
         exit();
-    }else{
-        echo "connection successfull";
     }
     $username =     test_input($_POST['username']);
     $password =     test_input($_POST['pwd']);
@@ -33,7 +31,9 @@ if(isset($_POST['signup-submit'])){
     $stmt -> bind_param("s", $username);
     echo 'username: '.$username;
     $stmt-> execute();
+
     $stmt->bind_result($result);
+    $stmt -> fetch();
     echo $result;
     echo "result is ".$result;
     echo "username is ".$username;

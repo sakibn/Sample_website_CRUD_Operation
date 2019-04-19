@@ -7,12 +7,12 @@ if (isset($_POST['signup-submit'])) {
     $r_pass = test_input($_POST['r-pwd']);
     $first = test_input($_POST['first']);
     $last = test_input($_POST['last']);
-    echo $password;
-    echo $r_pass;
-//    if (empty($username) || empty($password) || empty($r_pass) || empty($first) || empty($last)) {
-//        header("location: ../registration.php?error=emptyfield");
-//        exit();
-//    }
+//    echo $password;
+//    echo $r_pass;
+    if (empty($username) || empty($password) || empty($r_pass) || empty($first) || empty($last)) {
+        header("Location: ../registration.php?error=emptyfields");
+        exit();
+    }
 //    if (!preg_match("/^[a-zA-Z0-9*$/", $username)) {
 //        header("location: ../registration.php?error=invalidusername");
 //        exit();
