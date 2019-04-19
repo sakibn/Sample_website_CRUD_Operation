@@ -19,29 +19,40 @@ if(isset($_POST['signup-submit'])){
     $last =         test_input($_POST['last']);
 //    echo $username.$password.$first.$last;
     if (empty($username) || empty($password) || empty($r_pass) || empty($first) || empty($last)) {
-        header("Location: ../home.php?error=emptyfields");
+        header("Location: ../home.php?error=Houston,we_got_a_problem");
         exit();
     }
     if ($password !== $r_pass) {
         header("location: ../home.php?error=passwordcheck%username=" . $username . "&first=" . $first . "&last" . $last);
         exit();
     }
+
 //    echo $username;
     $stmt = $conn->prepare("SELECT USERNAME FROM P_EMPLOYEES WHERE lower(USERNAME=?);");
     $stmt -> bind_param("s", $username);
-    echo 'username: '.$username;
+//    echo 'username: '.$username;
     $stmt-> execute();
 
     $stmt->bind_result($result);
     $stmt -> fetch();
-    echo $result;
-    echo "result is ".$result;
-    echo "username is ".$username;
+//    echo $result;
+//    echo "result is ".$result;
+//    echo "username is ".$username;
     if($username == $result){
         echo 'verified';
         header("Location: ../home.php?user-already-exist");
     }else {
-        echo 'it aint working';
+        echo "working after the else";
+        $pwd =  hash('sha256',$password);
+        $stmt = $conn->prepare("INSERT INTO P_EMPLOYEES (USERNAME, PWD, ROLE, EMPLOYEE_FIRST_NAME, EMPLOYEE_LAST_NAME) VALUES (?,?,?,?,?);");
+        $role= 2;
+        $stmt -> bind_param("ssiss", $username, $pwd,$role, $first, $last);
+        $stmt->execute();
+        $stmt->bind_result($result);
+        $stmt->fetch();
+//        echo $result;
+//        echo "<br> working after the fetch";
+        header("Location: ../home.php?Its_a_succes");
     }
 }
 
