@@ -13,7 +13,7 @@ if (isset($_POST['login-submit'])) {
         header("Location: ../index.php?error=emptyfields");
         exit();
     } else {
-        $stmt = $conn->prepare("SELECT pwd FROM P_EMPLOYEES WHERE USERNAME=?;");
+        $stmt = $conn->prepare("SELECT PWD FROM P_EMPLOYEES WHERE USERNAME=?;");
 //        print "userID = " . $uid;
         $stmt->bind_param("s", $uid);
 //        print "working after the bind";
