@@ -3,7 +3,7 @@ require "test_header.php";
 ?>
 <head>
     <title>blah blah</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 </head>
 <body>
@@ -18,17 +18,22 @@ require "test_header.php";
         <form name="testform" ng-submit="insertData()">
             <table class="table table-bordered table-striped">
                 <thead>
-                    <tr>
-                        <th>firstname</th>
-                        <th>lastname</th>
-                        <th>Action</th>
-                    </tr>
+                <tr>
+                    <th>firstname</th>
+                    <th>lastname</th>
+                    <th>Action</th>
+                </tr>
                 </thead>
                 <tbody>
                 <tr>
-                    <td><input type="text" ng-model="addData.first_name" class="form-control" placeholder="Enter First Name" ng-required="true" /></td>
-                    <td><input type="text" ng-model="addData.last_name" class="form-control" placeholder="Enter Last Name" ng-required="true" /></td>
-                    <td><button type="submit" class="btn btn-success btn-sm" ng-disabled="testform.$invalid">Add</button></td>
+                    <td><input type="text" ng-model="addData.first_name" class="form-control"
+                               placeholder="Enter First Name" ng-required="true"/></td>
+                    <td><input type="text" ng-model="addData.last_name" class="form-control"
+                               placeholder="Enter Last Name" ng-required="true"/></td>
+                    <td>
+                        <button type="submit" class="btn btn-success btn-sm" ng-disabled="testform.$invalid">Add
+                        </button>
+                    </td>
                 </tr>
                 <tr ng-repeat="data in namesData" ng-include="getTemplate(data)">
                 </tr>
@@ -45,10 +50,10 @@ require "test_header.php";
             </td>
         </script>
         <script type="text/ng-template" id="edit">
-            <td><input type="text" ng-model="formData.first_name" class="form-control"  /></td>
-            <td><input type="text" ng-model="formData.last_name" class="form-control" /></td>
+            <td><input type="text" ng-model="formData.first_name" class="form-control"/></td>
+            <td><input type="text" ng-model="formData.last_name" class="form-control"/></td>
             <td>
-                <input type="hidden" ng-model="formData.data.id" />
+                <input type="hidden" ng-model="formData.data.id"/>
                 <button type="button" class="btn btn-info btn-sm" ng-click="editData()">Save</button>
                 <button type="button" class="btn btn-default btn-sm" ng-click="reset()">Cancel</button>
             </td>
@@ -57,40 +62,35 @@ require "test_header.php";
 </div>
 </body>
 <?php
-require "test_footer.php";
+require "footer.php";
 ?>
 <script>
     var app = angular.module('liveApp', []);
 
-    app.controller('liveController', function($scope, $http){
-
+    app.controller('liveController', function ($scope, $http) {
         $scope.formData = {};
         $scope.addData = {};
         $scope.success = false;
-
-        $scope.getTemplate = function(data){
-            if (data.id === $scope.formData.id)
-            {
+        $scope.getTemplate = function (data) {
+            if (data.id === $scope.formData.id) {
                 return 'edit';
-            }
-            else
-            {
+            } else {
                 return 'display';
             }
         };
 
-        $scope.fetchData = function(){
-            $http.get('select.php').success(function(data){
+        $scope.fetchData = function () {
+            $http.get('select.php').success(function (data) {
                 $scope.namesData = data;
             });
         };
 
-        $scope.insertData = function(){
+        $scope.insertData = function () {
             $http({
-                method:"POST",
-                url:"insert.php",
-                data:$scope.addData,
-            }).success(function(data){
+                method: "POST",
+                url: "insert.php",
+                data: $scope.addData,
+            }).success(function (data) {
                 $scope.success = true;
                 $scope.successMessage = data.message;
                 $scope.fetchData();
@@ -98,16 +98,16 @@ require "test_footer.php";
             });
         };
 
-        $scope.showEdit = function(data) {
+        $scope.showEdit = function (data) {
             $scope.formData = angular.copy(data);
         };
 
-        $scope.editData = function(){
+        $scope.editData = function () {
             $http({
-                method:"POST",
-                url:"edit.php",
-                data:$scope.formData,
-            }).success(function(data){
+                method: "POST",
+                url: "edit.php",
+                data: $scope.formData,
+            }).success(function (data) {
                 $scope.success = true;
                 $scope.successMessage = data.message;
                 $scope.fetchData();
@@ -115,22 +115,21 @@ require "test_footer.php";
             });
         };
 
-        $scope.reset = function(){
+        $scope.reset = function () {
             $scope.formData = {};
         };
 
-        $scope.closeMsg = function(){
+        $scope.closeMsg = function () {
             $scope.success = false;
         };
 
-        $scope.deleteData = function(id){
-            if(confirm("Are you sure you want to remove it?"))
-            {
+        $scope.deleteData = function (id) {
+            if (confirm("Are you sure you want to remove it?")) {
                 $http({
-                    method:"POST",
-                    url:"delete.php",
-                    data:{'id':id}
-                }).success(function(data){
+                    method: "POST",
+                    url: "delete.php",
+                    data: {'id': id}
+                }).success(function (data) {
                     $scope.success = true;
                     $scope.successMessage = data.message;
                     $scope.fetchData();
