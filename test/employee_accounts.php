@@ -15,7 +15,8 @@ require "test_header.php";
             <a href="#" class="close" data-dismiss="alert" ng-click="closeMsg()" aria-label="close">&times;</a>
             {{successMessage}}
         </div>
-        <form name="testform" ng-submit="insertData()">
+        <form name="testform" >
+            <!--              ng-submit="insertData()"-->
             <table class="table table-bordered table-striped">
                 <thead>
                 <tr>
@@ -26,13 +27,12 @@ require "test_header.php";
                 </thead>
                 <tbody>
                 <tr>
-                    <td><input type="text" ng-model="addData.first_name" class="form-control"
+                    <td><input type="text" ng-model="addData.EMPLOYEE_FIRST_NAME" class="form-control"
                                placeholder="Enter First Name" ng-required="true"/></td>
-                    <td><input type="text" ng-model="addData.last_name" class="form-control"
+                    <td><input type="text" ng-model="addData.EMPLOYEE_LAST_NAME" class="form-control"
                                placeholder="Enter Last Name" ng-required="true"/></td>
                     <td>
-                        <button type="submit" class="btn btn-success btn-sm" ng-disabled="testform.$invalid">Add
-                        </button>
+                        <button type="submit" class="btn btn-success btn-sm" ng-disabled="testform.$invalid">Add</button>
                     </td>
                 </tr>
                 <tr ng-repeat="data in namesData" ng-include="getTemplate(data)">
@@ -42,16 +42,16 @@ require "test_header.php";
             </table>
         </form>
         <script type="text/ng-template" id="display">
-            <td>{{data.first_name}}</td>
-            <td>{{data.last_name}}</td>
+            <td>{{data.EMPLOYEE_FIRST_NAME}}</td>
+            <td>{{data.EMPLOYEE_LAST_NAME}}</td>
             <td>
                 <button type="button" class="btn btn-primary btn-sm" ng-click="showEdit(data)">Edit</button>
                 <button type="button" class="btn btn-danger btn-sm" ng-click="deleteData(data.id)">Delete</button>
             </td>
         </script>
         <script type="text/ng-template" id="edit">
-            <td><input type="text" ng-model="formData.first_name" class="form-control"/></td>
-            <td><input type="text" ng-model="formData.last_name" class="form-control"/></td>
+            <td><input type="text" ng-model="formData.EMPLOYEE_FIRST_NAME" class="form-control"/></td>
+            <td><input type="text" ng-model="formData.EMPLOYEE_LAST_NAME" class="form-control"/></td>
             <td>
                 <input type="hidden" ng-model="formData.data.id"/>
                 <button type="button" class="btn btn-info btn-sm" ng-click="editData()">Save</button>
