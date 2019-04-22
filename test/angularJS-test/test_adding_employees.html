@@ -3,8 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 </head>
 <body>
+<div class="container" ng-app="liveApp" ng-controller="liveController" ng-init="fetchData()">
+    <br>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="data in namesData" ng-include="getTemplate(data)">
+
+            </tr>
+            </tbody>
+        </table>
+        <script type="text/ng-template" id="display">
+            <td>{{data.EMPLOYEE_FIRST_NAME}}</td>
+            <td>{{data.EMPLOYEE_LAST_NAME}}</td>
+            <td>
+                <button type="button" class="btn btn-primary btn-sm">Edit</button>
+                <button type="button" class="btn btn-danger btn-sm">Delete</button>
+            </td>
+        </script>
+        <script type="text/ng-template" id="edit">
+        <td>
+            <input type="text" ng-model="formData.EMPLOYEE_FIRST_NAME" class="form-control"/>
+        </td>
+            <td>
+                <input type="text" ng-model="formData.EMPLOYEE_LAST_NAME" class="form-control"/>
+            </td>
+            <td>
+                <input type="hidden" ng-model="formData.data.id"/>
+                <button type="button" class="btn btn-info btn-sm">Save</button>
+                <button type="button" class="btn btn-default btn-sm">Cancel</button>
+            </td>
+</script>
+    </div>
+</div>
 
 </body>
 </html>
+<script>
+    var app = angular.module('liveApp', []);
+    app.controller('liveController', function ($scope, $http) {
+        $scope.fetchData = function () {
+            $http.get('select.php').success(function (data) {
+                $scope.namesData = data;
+            })
+        };
+        $scope.formData ={};
+        $scope.getTemplate= function (data) {
+            if(data.id ==$scope.formData.id){
+                return 'edit';
+            }else {
+                return 'display';
+            }
+        }
+    });
+</script>
