@@ -5,7 +5,7 @@ require 'dbh.test.php';
 if($conn->connect_error){
     die("Connection failed: ".$conn->connect_error);
 }
-$query = "SELECT EMPLOYEE_ID, EMPLOYEE_FIRST_NAME, EMPLOYEE_LAST_NAME FROM P_EMPLOYEES ORDER BY EMPLOYEE_ID DESC";
+$query = "SELECT EMPLOYEE_FIRST_NAME, EMPLOYEE_LAST_NAME FROM P_EMPLOYEES ORDER BY EMPLOYEE_ID DESC";
 $result = $conn ->query($query);
 $data[]="";
 if ($result->num_rows > 0) {
@@ -19,7 +19,7 @@ if ($result->num_rows > 0) {
 //    echo json_decode($data);
 }
 
-$conn->close();
+//$conn->close();
 //$statement = $connect->prepare($query);
 //if($statement->execute())
 //{
