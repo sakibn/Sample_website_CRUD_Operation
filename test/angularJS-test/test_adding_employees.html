@@ -50,7 +50,7 @@
             <td>{{data.EMPLOYEE_FIRST_NAME}}</td>
             <td>{{data.EMPLOYEE_LAST_NAME}}</td>
             <td>
-                <button type="button" class="btn btn-primary btn-sm">Edit</button>
+                <button type="button" class="btn btn-primary btn-sm" ng-click="showEdit(data)">Edit</button>
                 <button type="button" class="btn btn-danger btn-sm">Delete</button>
             </td>
         </script>
@@ -63,8 +63,8 @@
             </td>
             <td>
                 <input type="hidden" ng-model="formData.data.EMPLOYEE_ID"/>
-                <button type="button" class="btn btn-info btn-sm">Save</button>
-                <button type="button" class="btn btn-default btn-sm">Cancel</button>
+                <button type="button" class="btn btn-info btn-sm" ng-click="editData(data.username)">Save</button>
+                <button type="button" class="btn btn-default btn-sm" ng-click="reset()">Cancel</button>
             </td>
         </script>
     </div>
@@ -104,6 +104,30 @@
                     $scope.successMessage = data.message;
                     $scope.fetchData();
                     $scope.addData = {};
+            });
+        };
+
+        $scope.showEdit = function(data)
+        {
+            $scope.formData = angular.copy(data);
+        };
+
+        $scope.reset = function()
+        {
+            $scope.formData = {};
+        };
+
+        $scope.editData = function()
+        {
+          $http({
+              method:"POST",
+              url:"test_edit.php",
+              data:$scope.formData
+          }).success(function(data){
+                $scope.success = true;
+                $scope.successMessage = data.message;
+                $scope.fetchData();
+                $scope.formData = {};
             });
         };
     });
