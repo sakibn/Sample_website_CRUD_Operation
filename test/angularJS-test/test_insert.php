@@ -6,7 +6,7 @@ if ($conn->connect_error) {
 $message = '';
 
 $form_data = json_decode(file_get_contents("php://input"));
-$username = 'blah';
+$username = 'null';
 $password = hash('sha256','LKASDJF');
 $dob ='2012-02-01';
 $employee_first_name = $form_data->first_name;

@@ -26,12 +26,12 @@
                 <tbody>
                 <tr>
                     <td>
-                        <input type="text" ng-model="addData.first_name"
+                        <input type="text" ng-model="addData.EMPLOYEE_FIRST_NAME"
                                 class="form-control" placeholder="Enter First Name"
                                 ng-regulated="true" />
                     </td>
                     <td>
-                        <input type="text" ng-model="addData.last_name"
+                        <input type="text" ng-model="addData.EMPLOYEE_LAST_NAME"
                                class="form-control" placeholder="Enter Last Name"
                                ng-regulated="true" />
                     </td>
@@ -63,7 +63,7 @@
             </td>
             <td>
                 <input type="hidden" ng-model="formData.data.EMPLOYEE_ID"/>
-                <button type="button" class="btn btn-info btn-sm" ng-click="editData(data.username)">Save</button>
+                <button type="button" class="btn btn-info btn-sm" ng-click="editData()">Save</button>
                 <button type="button" class="btn btn-default btn-sm" ng-click="reset()">Cancel</button>
             </td>
         </script>
@@ -106,7 +106,9 @@
                     $scope.addData = {};
             });
         };
-
+        $scope.closeMsg = function(){
+            $scope.success = false;
+        };
         $scope.showEdit = function(data)
         {
             $scope.formData = angular.copy(data);
