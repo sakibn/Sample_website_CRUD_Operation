@@ -15,7 +15,7 @@ $message = '';
 $employee_id = '49';
 $username = 'yolo';
 $pwd = '49';
-$employee_last_name = 'yolo';
+$employee_first_name = 'yolo';
 $employee_last_name ='yolo';
 //echo 'working after the variable<br>';
 //$data = array(
@@ -32,10 +32,13 @@ $statement->fetch();
 //echo $result;
 if ($result == $pwd) {
 //    echo 'working right after the if statement '.$result.'  '.$pwd;
-    $statement = $conn->prepare("UPDATE P_EMPLOYEES SET EMPLOYEE_FIRST_NAME = ?, EMPLOYEE_LAST_NAME = ?, USERNAME =? where EMPLOYEE_ID = ?;");
+    $statement = $conn->prepare("UPDATE P_EMPLOYEES SET EMPLOYEE_FIRST_NAME = EMPLOYEE_FIRST_NAME, EMPLOYEE_LAST_NAME = EMPLOYEE_LAST_NAME, USERNAME = USERNAME WHERE EMPLOYEE_ID = 49;");
     echo 'working after the prepare';
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
 //$query= ("UPDATE P_EMPLOYEES SET employee_first_name = :first_name, employee_last_name = :last_name where EMPLOYEE_ID = :id");
-    $statement->bind_param("sssi", $employee_first_name, $employee_last_name, $username, $employee_id);
+    $statement -> bind_param('sssi', $employee_first_name, $employee_last_name, $username, $employee_id);
     echo 'working after the binding';
 //$statement= $connect->prepare($query);
     if ($statement->execute()) {
