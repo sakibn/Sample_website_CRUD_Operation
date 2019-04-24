@@ -51,7 +51,7 @@
             <td>{{data.EMPLOYEE_LAST_NAME}}</td>
             <td>
                 <button type="button" class="btn btn-primary btn-sm" ng-click="showEdit(data)">Edit</button>
-                <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                <button type="button" class="btn btn-danger btn-sm" ng-click="deleteData(data.employee_id)">Delete</button>
             </td>
         </script>
         <script type="text/ng-template" id="edit">
@@ -132,5 +132,21 @@
                 $scope.formData = {};
             });
         };
+
+        $scope.deleteData = function(employee_id)
+        {
+            if(confirm("Are you sure you want to remove it?"))
+            {
+                $http({
+                    method:"POST",
+                    url:"test_delete.php",
+                    data:{'employee_id':employee_id}
+                }).success(function(data){
+                    $scope.success = true;
+                    $scope.successMessage = data.message;
+                    $scope.fetchData();
+                });
+            }
+        }
     });
 </script>
