@@ -13,7 +13,7 @@ $message = '';
 //$employee_first_name = $form_data->EMPLOYEE_FIRST_NAME;
 //$employee_last_name = $form_data->EMPLOYEE_LAST_NAME;
 $employee_id = '49';
-$username = 'yolo';
+$user_name = 'yolo';
 $pwd = '49';
 $employee_first_name = 'yolo';
 $employee_last_name ='yolo';
@@ -28,17 +28,18 @@ $statement->bind_param("i", $employee_id);
 $statement->execute();
 $statement->bind_result($result);
 $statement->fetch();
+$statement->close();
 //echo 'working after the fetch';
 //echo $result;
 if ($result == $pwd) {
-//    echo 'working right after the if statement '.$result.'  '.$pwd;
-    $statement = $conn->prepare("UPDATE P_EMPLOYEES SET EMPLOYEE_FIRST_NAME = EMPLOYEE_FIRST_NAME, EMPLOYEE_LAST_NAME = EMPLOYEE_LAST_NAME, USERNAME = USERNAME WHERE EMPLOYEE_ID = 49;");
+//    echo 'working right after the if statement '.$result.'  '.$pwd;fg
+    $statement = $conn->prepare("UPDATE P_EMPLOYEES SET EMPLOYEE_FIRST_NAME = ?, EMPLOYEE_LAST_NAME = ?, USERNAME = ? WHERE EMPLOYEE_ID = ?;");
     echo 'working after the prepare';
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
 //$query= ("UPDATE P_EMPLOYEES SET employee_first_name = :first_name, employee_last_name = :last_name where EMPLOYEE_ID = :id");
-    $statement -> bind_param('sssi', $employee_first_name, $employee_last_name, $username, $employee_id);
+    $statement -> bind_param('sssi', $employee_first_name, $employee_last_name, $user_name, $employee_id);
     echo 'working after the binding';
 //$statement= $connect->prepare($query);
     if ($statement->execute()) {
@@ -50,7 +51,7 @@ if ($result == $pwd) {
     $pwd = hash('sha256', $pwd);
     $statement = $conn->prepare("UPDATE P_EMPLOYEES SET employee_first_name = ?, employee_last_name = ?, USERNAME =?, PWD =? where EMPLOYEE_ID = ?;");
 //$query= ("UPDATE P_EMPLOYEES SET employee_first_name = :first_name, employee_last_name = :last_name where EMPLOYEE_ID = :id");
-    $statement->bind_param("ssssi", $employee_first_name, $employee_last_name, $username, $pwd, $employee_id);
+    $statement->bind_param("ssssi", $employee_first_name, $employee_last_name, $user_name, $pwd, $employee_id);
 
 //$statement= $connect->prepare($query);
     if ($statement->execute()) {
@@ -62,7 +63,7 @@ if ($result == $pwd) {
 //$statement->fetch();
 $output = array(
     'message' => $message,
-    'username' => $username,
+    'username' => $user_name,
     'password' => $pwd,
     'first name' => $employee_first_name,
     'last Name' => $employee_first_name,
