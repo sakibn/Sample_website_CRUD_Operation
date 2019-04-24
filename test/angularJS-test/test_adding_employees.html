@@ -10,9 +10,9 @@
 <div class="container" ng-app="liveApp" ng-controller="liveController" ng-init="fetchData()">
     <br>
     <div class="table-responsive">
-        <div class="alert alert-success alert-dismissable" ng-show="success">
+        <div class="alert alert-success alert-dismissible" ng-show="success">
             <a href="#" class="close" data-dismiss="alert" ng-click="closeMsg()" aria-label="close">&times;</a>
-            {{ successMessage }}
+            {{successMessage}}
         </div>
         <form name="testform" ng-submit="insertData()">
             <table class="table table-bordered table-striped">
@@ -26,22 +26,19 @@
                 <tbody>
                 <tr>
                     <td>
-                        <input type="text" ng-model="addData.EMPLOYEE_FIRST_NAME"
-                                class="form-control" placeholder="Enter First Name"
-                                ng-regulated="true" />
+                        <input type="text" ng-model="addData.EMPLOYEE_FIRST_NAME" class="form-control" placeholder="Enter First Name" ng-required="true" />
                     </td>
                     <td>
                         <input type="text" ng-model="addData.EMPLOYEE_LAST_NAME"
                                class="form-control" placeholder="Enter Last Name"
-                               ng-regulated="true" />
+                               ng-required="true" />
                     </td>
                     <td>
-                        <button type="submit" class="bt btn-success btn-sm"
+                        <button type="submit" class="btn btn-success btn-sm"
                                 ng-disabled="testform.$invalid">Add</button>
                     </td>
                 </tr>
                 <tr ng-repeat="data in namesData" ng-include="getTemplate(data)">
-
                 </tr>
                 </tbody>
             </table>
@@ -51,7 +48,7 @@
             <td>{{data.EMPLOYEE_LAST_NAME}}</td>
             <td>
                 <button type="button" class="btn btn-primary btn-sm" ng-click="showEdit(data)">Edit</button>
-                <button type="button" class="btn btn-danger btn-sm" ng-click="deleteData(data.employee_id)">Delete</button>
+                <button type="button" class="btn btn-danger btn-sm" ng-click="deleteData(data.EMPLOYEE_ID)">Delete</button>
             </td>
         </script>
         <script type="text/ng-template" id="edit">
@@ -78,7 +75,7 @@
         $scope.fetchData = function () {
             $http.get('select.php').success(function (data) {
                 $scope.namesData = data;
-            })
+            });
         };
         $scope.formData = {};
         $scope.getTemplate = function (data) {
@@ -98,7 +95,7 @@
             $http({
                 method: "POST",
                 url: "test_insert.php",
-                data:$scope.addData
+                data:$scope.addData,
             }).success(function(data){
                     $scope.success = true;
                     $scope.successMessage = data.message;
@@ -124,7 +121,7 @@
           $http({
               method:"POST",
               url:"test_edit.php",
-              data:$scope.formData
+              data:$scope.formData,
           }).success(function(data){
                 $scope.success = true;
                 $scope.successMessage = data.message;
@@ -133,14 +130,14 @@
             });
         };
 
-        $scope.deleteData = function(employee_id)
+        $scope.deleteData = function(EMPLOYEE_ID)
         {
             if(confirm("Are you sure you want to remove it?"))
             {
                 $http({
                     method:"POST",
                     url:"test_delete.php",
-                    data:{'employee_id':employee_id}
+                    data:{'EMPLOYEE_ID':EMPLOYEE_ID}
                 }).success(function(data){
                     $scope.success = true;
                     $scope.successMessage = data.message;
