@@ -43,14 +43,13 @@
                         <button type="submit" class="btn btn-success btn-sm" ng-disabled="testform.$invalid">Add</button>
                     </td>
                 </tr>
-                <tr ng-repeat="data in namesData" ng-include="getTemplate(data)">
-                </tr>
+                <tr ng-repeat="data in namesData" ng-include="getTemplate(data)"></tr>
                 </tbody>
             </table>
         </form>
         <script type="text/ng-template" id="display">
             <td>{{data.USERNAME}}</td>
-            <td>{{password}}</td>
+            <td>{{data.PWD}}</td>
             <td>{{data.EMPLOYEE_FIRST_NAME}}</td>
             <td>{{data.EMPLOYEE_LAST_NAME}}</td>
             <td>
