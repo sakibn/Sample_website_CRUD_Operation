@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-</head>
-<body>
+
+
+<?php require "header_footer/header.php";?>
+
 <div class="container" ng-app="liveApp" ng-controller="liveController" ng-init="fetchData()">
     <br>
     <div class="table-responsive">
@@ -27,7 +22,7 @@
                     <th>City</th>
                     <th>State</th>
                     <th>Zip</th>
-                    <th>Wage</th>
+                    <th>Salary</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -49,19 +44,19 @@
                         <input type="text" ng-model="addData.EMPLOYEE_DOB" class="form-control" placeholder="DOB yyyy-mm-dd" ng-required="true" />
                     </td>
                     <td>
-                        <input type="text" ng-model="addData.EMPLOYEE_STREET" class="form-control" placeholder="DOB yyyy-mm-dd" ng-required="true" />
+                        <input type="text" ng-model="addData.EMPLOYEE_STREET" class="form-control" placeholder="Enter Street Address" ng-required="true" />
                     </td>
                     <td>
-                        <input type="text" ng-model="addData.EMPLOYEE_CITY" class="form-control" placeholder="DOB yyyy-mm-dd" ng-required="true" />
+                        <input type="text" ng-model="addData.EMPLOYEE_CITY" class="form-control" placeholder="Enter City" ng-required="true" />
                     </td>
                     <td>
-                        <input type="text" ng-model="addData.EMPLOYEE_STATE" class="form-control" placeholder="DOB yyyy-mm-dd" ng-required="true" />
+                        <input type="text" ng-model="addData.EMPLOYEE_STATE" class="form-control" placeholder="Enter State" ng-required="true" />
                     </td>
                     <td>
-                        <input type="text" ng-model="addData.EMPLOYEE_ZIP" class="form-control" placeholder="DOB yyyy-mm-dd" ng-required="true" />
+                        <input type="text" ng-model="addData.EMPLOYEE_ZIP" class="form-control" placeholder="Enter Zip Code" ng-required="true" />
                     </td>
                     <td>
-                        <input type="text" ng-model="addData.EMPLOYEE_WAGE" class="form-control" placeholder="DOB yyyy-mm-dd" ng-required="true" />
+                        <input type="text" ng-model="addData.EMPLOYEE_WAGE" class="form-control" placeholder="Enter Salary" ng-required="true" />
                     </td>
 
 
@@ -160,13 +155,13 @@
         {
             $http({
                 method: "POST",
-                url: "test_insert.php",
+                url: "required_files/insert.php",
                 data:$scope.addData,
             }).success(function(data){
-                    $scope.success = true;
-                    $scope.successMessage = data.message;
-                    $scope.fetchData();
-                    $scope.addData = {};
+                $scope.success = true;
+                $scope.successMessage = data.message;
+                $scope.fetchData();
+                $scope.addData = {};
             });
         };
         $scope.closeMsg = function(){
@@ -184,11 +179,11 @@
 
         $scope.editData = function()
         {
-          $http({
-              method:"POST",
-              url:"test_edit.php",
-              data:$scope.formData,
-          }).success(function(data){
+            $http({
+                method:"POST",
+                url:"required_files/edit.php",
+                data:$scope.formData,
+            }).success(function(data){
                 $scope.success = true;
                 $scope.successMessage = data.message;
                 $scope.fetchData();
@@ -202,7 +197,7 @@
             {
                 $http({
                     method:"POST",
-                    url:"test_delete.php",
+                    url:"required_files/delete.php",
                     data:{'EMPLOYEE_ID':EMPLOYEE_ID}
                 }).success(function(data){
                     $scope.success = true;

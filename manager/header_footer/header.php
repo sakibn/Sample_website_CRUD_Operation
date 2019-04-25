@@ -8,6 +8,8 @@ session_start();
         V-haul
     </title>
     <link rel="stylesheet" href="../css/login_registration.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
 </head>
 <body>
 <header>
