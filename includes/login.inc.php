@@ -28,6 +28,7 @@ if (isset($_POST['login-submit'])) {
 //            echo "verified";
             session_start();
             $_SESSION['username'] = $uid;
+//            $_SESSION['role'] =$role;
 //            $_SESSION['userId'] = $row['USER_ID'];
             header("Location: ../manager/home.php?login=success");
             $stmt->close();

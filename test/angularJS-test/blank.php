@@ -11,4 +11,4 @@ $employee_last_name ='yolo';
 
 $statement = $conn->prepare("UPDATE P_EMPLOYEES SET EMPLOYEE_FIRST_NAME = ?, EMPLOYEE_LAST_NAME =?, USERNAME=? WHERE EMPLOYEE_ID= ?;");
 $statement -> bind_param('sssi',$employee_first_name, $employee_last_name, $username, $employee_id);
-echo 'working';
+//echo 'working';
