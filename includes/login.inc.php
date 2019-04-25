@@ -30,7 +30,7 @@ if (isset($_POST['login-submit'])) {
             $_SESSION['username'] = $uid;
 //            $_SESSION['role'] =$role;
 //            $_SESSION['userId'] = $row['USER_ID'];
-            header("Location: ../index.php?login=success"); // TODO it wont go to the page i want it to
+            header("Location: index.php?login=success"); // TODO it wont go to the page i want it to
             $stmt->close();
             exit();
         } else {
@@ -51,7 +51,7 @@ if (isset($_POST['login-submit'])) {
                 session_start();
                 $_SESSION['username'] = $uid;
 //              $_SESSION['userId'] = $row['USER_ID'];
-                header("Location: ../welcome.php?login=success");
+                header("Location: ../index.php?login=success");
                 $stmt->close();
                 exit();
             } else {
