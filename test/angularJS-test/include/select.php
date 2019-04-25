@@ -42,7 +42,7 @@ if($statement->execute()){
 
 //select.php
 //include('database_connection.php');
-require 'include/dbh.test.php';
+require 'dbh.test.php';
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }

@@ -139,7 +139,7 @@
 
     app.controller('liveController', function ($scope, $http) {
         $scope.fetchData = function () {
-            $http.get('select.php').success(function (data) {
+            $http.get('include/select.php').success(function (data) {
                 $scope.namesData = data;
             });
         };

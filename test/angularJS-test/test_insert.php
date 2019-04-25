@@ -32,9 +32,6 @@ if($statement->execute()){
 }
 $output = array(
     'message' => $message,
-    'username' => $username,
-    'firstname' => $employee_first_name,
-    'lastname' => $employee_last_name
 );
 
 echo json_encode($output);
