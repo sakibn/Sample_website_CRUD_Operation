@@ -10,7 +10,7 @@ $first_name =$form_data->EMPLOYEE_FIRST_NAME;
 $last_name =$form_data->EMPLOYEE_LAST_NAME;
 $first_name = test_input($first_name);
 $last_name = test_input($last_name);
-echo $first_name."<br>".$last_name;
+//echo $first_name."<br>".$last_name;
 $query = $conn->prepare("INSERT INTO P_EMPLOYEES (EMPLOYEE_FIRST_NAME, EMPLOYEE_LAST_NAME) VALUES (?,?);");
 $query->bind_param("ss", $first_name, $last_name);
 if ($query->execute()) {

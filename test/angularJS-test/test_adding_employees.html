@@ -23,6 +23,11 @@
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>DOB yyyy-mm-dd</th>
+                    <th>Street</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Zip</th>
+                    <th>Wage</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -44,6 +49,24 @@
                         <input type="text" ng-model="addData.EMPLOYEE_DOB" class="form-control" placeholder="DOB yyyy-mm-dd" ng-required="true" />
                     </td>
                     <td>
+                        <input type="text" ng-model="addData.EMPLOYEE_STREET" class="form-control" placeholder="DOB yyyy-mm-dd" ng-required="true" />
+                    </td>
+                    <td>
+                        <input type="text" ng-model="addData.EMPLOYEE_CITY" class="form-control" placeholder="DOB yyyy-mm-dd" ng-required="true" />
+                    </td>
+                    <td>
+                        <input type="text" ng-model="addData.EMPLOYEE_STATE" class="form-control" placeholder="DOB yyyy-mm-dd" ng-required="true" />
+                    </td>
+                    <td>
+                        <input type="text" ng-model="addData.EMPLOYEE_ZIP" class="form-control" placeholder="DOB yyyy-mm-dd" ng-required="true" />
+                    </td>
+                    <td>
+                        <input type="text" ng-model="addData.EMPLOYEE_WAGE" class="form-control" placeholder="DOB yyyy-mm-dd" ng-required="true" />
+                    </td>
+
+
+
+                    <td>
                         <button type="submit" class="btn btn-success btn-sm" ng-disabled="testform.$invalid">Add</button>
                     </td>
                 </tr>
@@ -57,6 +80,12 @@
             <td>{{data.EMPLOYEE_FIRST_NAME}}</td>
             <td>{{data.EMPLOYEE_LAST_NAME}}</td>
             <td>{{data.EMPLOYEE_DOB}}</td>
+            <td>{{data.EMPLOYEE_STREET}}</td>
+            <td>{{data.EMPLOYEE_CITY}}</td>
+            <td>{{data.EMPLOYEE_STATE}}</td>
+            <td>{{data.EMPLOYEE_ZIP}}</td>
+            <td>{{data.EMPLOYEE_WAGE}}</td>
+
             <td>
                 <button type="button" class="btn btn-primary btn-sm" ng-click="showEdit(data)">Edit</button>
                 <button type="button" class="btn btn-danger btn-sm" ng-click="deleteData(data.EMPLOYEE_ID)">Delete</button>
@@ -78,6 +107,22 @@
             <td>
                 <input type="text" ng-model="formData.EMPLOYEE_DOB" class="form-control"/>
             </td>
+            <td>
+                <input type="text" ng-model="formData.EMPLOYEE_STREET" class="form-control"/>
+            </td>
+            <td>
+                <input type="text" ng-model="formData.EMPLOYEE_CITY" class="form-control"/>
+            </td>
+            <td>
+                <input type="text" ng-model="formData.EMPLOYEE_STATE" class="form-control"/>
+            </td>
+            <td>
+                <input type="text" ng-model="formData.EMPLOYEE_ZIP" class="form-control"/>
+            </td>
+            <td>
+                <input type="text" ng-model="formData.EMPLOYEE_WAGE" class="form-control"/>
+            </td>
+
             <td>
                 <input type="hidden" ng-model="formData.data.EMPLOYEE_ID"/>
                 <button type="button" class="btn btn-info btn-sm" ng-click="editData()">Save</button>
