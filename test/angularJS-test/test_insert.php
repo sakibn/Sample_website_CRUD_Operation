@@ -24,8 +24,8 @@ $password = hash('sha256',$password);
 if (!preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$dob)) {
    exit;
 }
-$statement = $conn->prepare("insert into P_EMPLOYEES (USERNAME, PWD, EMPLOYEE_FIRST_NAME, EMPLOYEE_LAST_NAME, EMPLOYEE_DOB, ) VALUES (?, ?, ?, ?,?);");
-$statement -> bind_param("sssss", $username, $password, $employee_first_name, $employee_last_name, $dob);
+$statement = $conn->prepare("insert into P_EMPLOYEES (USERNAME, PWD, EMPLOYEE_FIRST_NAME, EMPLOYEE_LAST_NAME, EMPLOYEE_DOB, EMPLOYEE_STREET, EMPLOYEE_CITY, EMPLOYEE_STATE, EMPLOYEE_ZIP, EMPLOYEE_WAGE ) VALUES (?,?,?,?,?,?,?,?,?,?);");
+$statement -> bind_param("ssssssssid", $username, $password, $employee_first_name, $employee_last_name, $dob, $street, $city,$state,$zip,$wage);
 
 if($statement->execute()){
     $message = 'Data Inserted';
