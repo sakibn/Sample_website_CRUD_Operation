@@ -3,10 +3,19 @@
 if (isset($_POST['signup-submit'])) {
     require 'dbh.inc.php';
     $username = test_input($_POST['username']);
-    $password = test_input( $_POST['pwd']);
+    $password = test_input($_POST['pwd']);
     $r_pass = test_input($_POST['r-pwd']);
-    $first = test_input($_POST['first']);
-    $last = test_input($_POST['last']);
+//    $credit_card = test_input($_POST['card']);
+    $license = test_input($_POST['license']);
+    $name = test_input($_POST['name']);
+    $phone = test_input($_POST['phone']);
+    $age = test_input($_POST['age']);
+    $street = test_input($_POST['street']);
+    $city = test_input($_POST['city']);
+    $state = test_input($_POST['state']);
+    $zip = test_input($_POST['zip']);
+
+
 //    echo $password;
 //    echo $r_pass;
 //    if (empty($username) || empty($password) || empty($r_pass) || empty($first) || empty($last)) {
@@ -21,8 +30,8 @@ if (isset($_POST['signup-submit'])) {
 //        header("location: ../registration.php?error=passwordcheck");
 //        exit();
 //    }
-    $hash =hash('sha256', $password);
-    $sql = "select username from P_CUSTOMER where username=?";
+    $hash = hash('sha256', $password);
+    $sql = "select USER_NAME from P_CUSTOMER where USER_NAME=?";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../registration.php?error=sqlerror");
@@ -36,7 +45,8 @@ if (isset($_POST['signup-submit'])) {
             header("location: ../registration.php?error=invalidusername%first=" . $first . "&last" . $last);
             exit();
         } else {
-            $sql = "insert into P_CUSTOMER (username, pwd, CUSTOMER_F_NAME, CUSTOMER_L_NAME) values (?,?,?,?)";
+            $sql = "insert into P_CUSTOMER (USER_NAME, PWD, DRIVER_LICENSE_NUMBER, CUSTOMER_NAME, CUSTOMER_PHONE_NUMBER, 
+                        CUSTOMER_AGE, CUSTOMER_STREET, CUSTOMER_CITY, CUSTOMER_STATE, CUSTOMER_ZIP) values (?,?,?,?,?,?,?,?,?,?)";
             $stmt = mysqli_stmt_init($conn);
             if (!mysqli_stmt_prepare($stmt, $sql)) {
                 header("location: ../registration.php?error=sqlerror");
@@ -44,21 +54,23 @@ if (isset($_POST['signup-submit'])) {
             } else {
 //                    $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
 
-                if (!mysqli_stmt_bind_param($stmt, "ssss", $username, $hash, $first, $last)) {
+                if (!mysqli_stmt_bind_param($stmt, "sss", $username, $hash,$license, $name, $phone, $age, $street, $city, $state, $zip)) {
                     echo "error in binding";
                 }
                 if (!mysqli_stmt_execute($stmt)) {
                     echo "error in executing";
                 }
                 mysqli_stmt_store_result($stmt);
+                mysqli_stmt_close($stmt);
                 header("location: ../registration.php?signup=success");
                 exit();
             }
+
         }
     }
 //        }
 
-    mysqli_stmt_close($stmt);
+
 } else {
 //    header("Location: ../index.php");
     exit();
