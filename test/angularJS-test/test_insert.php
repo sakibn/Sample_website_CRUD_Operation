@@ -20,12 +20,16 @@ $state = $form_data -> EMPLOYEE_STATE;
 $zip = $form_data -> EMPLOYEE_ZIP;
 $wage = $form_data -> EMPLOYEE_WAGE;
 $password = hash('sha256',$password);
+$role =2;
 
 if (!preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$dob)) {
    exit;
 }
-$statement = $conn->prepare("insert into P_EMPLOYEES (EMPLOYEE_USER_NAME, EMPLOYEE_PWD, EMPLOYEE_FIRST_NAME, EMPLOYEE_LAST_NAME, EMPLOYEE_DOB, EMPLOYEE_STREET, EMPLOYEE_CITY, EMPLOYEE_STATE, EMPLOYEE_ZIP, EMPLOYEE_WAGE ) VALUES (?,?,?,?,?,?,?,?,?,?);");
-$statement -> bind_param("ssssssssid", $username, $password, $employee_first_name, $employee_last_name, $dob, $street, $city,$state,$zip,$wage);
+if (!preg_match('/^\w{5,}$/', $username)) {
+    exit();
+}
+$statement = $conn->prepare("insert into P_EMPLOYEES (EMPLOYEE_USER_NAME, EMPLOYEE_PWD, EMPLOYEE_FIRST_NAME, EMPLOYEE_LAST_NAME, EMPLOYEE_DOB, EMPLOYEE_STREET, EMPLOYEE_CITY, EMPLOYEE_STATE, EMPLOYEE_ZIP, EMPLOYEE_WAGE, ROLE ) VALUES (?,?,?,?,?,?,?,?,?,?,?);");
+$statement -> bind_param("ssssssssidi", $username, $password, $employee_first_name, $employee_last_name, $dob, $street, $city,$state,$zip,$wage, $role);
 
 if($statement->execute()){
     $message = 'Data Inserted';

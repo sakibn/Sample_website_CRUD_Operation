@@ -53,7 +53,7 @@ if (isset($_POST['login-submit'])) {
             $_SESSION['dog'] = $data[1]["ROLE"];
 //            $_SESSION['role'] =$role;
 //            $_SESSION['userId'] = $row['USER_ID'];
-            header("Location: ../index.php?login=success"); // TODO it wont go to the page i want it to
+            header("Location: ../index.php?login=success"); // TODO it wont go to the page i want it to (no,it does)
 
             exit();
         }

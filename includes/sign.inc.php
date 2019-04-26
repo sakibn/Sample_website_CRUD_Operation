@@ -14,11 +14,11 @@ if (isset($_POST['signup-submit'])) {
     $city = test_input($_POST['city']);
     $state = test_input($_POST['state']);
     $zip = test_input($_POST['zip']);
-    if (empty($username) || empty($password) || empty($name) || empty($phone) || empty($age) || empty($street) || empty($city) || empty($state) || empty($zip)){
+    if (empty($username) || empty($password) || empty($name) || empty($phone) || empty($age) || empty($street) || empty($city) || empty($state) || empty($zip)) {
         header("Location: ../registration.php?error=emptyfields");
         exit();
     }
-    if(!preg_match('/^\w{5,}$/', $username)) {
+    if (!preg_match('/^\w{5,}$/', $username)) {
         header("Location: ../registration.php?error=invalidusername");
         exit();
     }
@@ -50,7 +50,7 @@ if (isset($_POST['signup-submit'])) {
             } else {
 //                    $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
 
-                if (!mysqli_stmt_bind_param($stmt, "ssssiisssi", $username, $hash,$license, $name, $phone, $age, $street, $city, $state, $zip)) {
+                if (!mysqli_stmt_bind_param($stmt, "ssssiisssi", $username, $hash, $license, $name, $phone, $age, $street, $city, $state, $zip)) {
                     echo "error in binding";
                 }
                 if (!mysqli_stmt_execute($stmt)) {
