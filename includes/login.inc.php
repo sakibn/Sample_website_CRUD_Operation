@@ -27,34 +27,37 @@ if (isset($_POST['login-submit'])) {
 //        echo  '<br>working before the fetch';
         if ($result->num_rows > 0) {
             // output data of each row
-            echo  'working after the condition<br>';
-            var_dump($result);
+//            echo  'working after the condition<br>';
+//            var_dump($result);
             while ($row = $result->fetch_assoc()) {
 //        echo "UserName: " . $row["USERNAME"]. " - Role " . $row["ROLE"]. "<br>";
                 $data[] = $row;
             }
+//            var_dump($data);
+//            echo '<br>Password:'.$data[1]["PWD"];
+//            exit();
 //            echo '<br>getting data<br>';
-            json_encode($row);
-            echo $row;
-            exit();
-        }else{
-            echo 'not working';
-            exit();
+//            json_encode($row);
+//            echo $row;
+//            exit();
         }
-        echo '<br>working after the condition';
-            echo $data[0];
+        $stmt->close();
+//        echo '<br>working after the condition';
+//            echo $data["PWD"];
 //        echo "\nresult= " . $result;
 //        echo "<br> hash:".$hash;
-        if ($hash == $data[0]) {
+        if ($hash == $data[1]["PWD"]) {
 //            echo "verified";
             session_start();
             $_SESSION['username'] = $uid;
+            $_SESSION['dog'] = $data[1]["ROLE"];
 //            $_SESSION['role'] =$role;
 //            $_SESSION['userId'] = $row['USER_ID'];
-            header("Location: index.php?login=success"); // TODO it wont go to the page i want it to
+            header("Location: ../index.php?login=success"); // TODO it wont go to the page i want it to
             $stmt->close();
             exit();
-        } else {
+        }
+        else {
             $stmt = $conn->prepare("SELECT pwd FROM P_CUSTOMER WHERE username=?;");
 //        print "working after the sql";
 //            print "userID = " . $uid;

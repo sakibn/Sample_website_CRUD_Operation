@@ -2,7 +2,7 @@
 define('MyConst', TRUE);
 require "header_footer/header.php";
 //require "";
-if($_SESSION['username']!= 'manager'){
+if($_SESSION['dog']!= 4567 ){
     header("location: ../index.php?error=wrong_place");
 }
 ?>
