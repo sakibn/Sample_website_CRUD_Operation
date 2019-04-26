@@ -4,32 +4,28 @@ if (isset($_POST['signup-submit'])) {
     require 'dbh.inc.php';
     $username = test_input($_POST['username']);
     $password = test_input($_POST['pwd']);
-    $r_pass = test_input($_POST['r-pwd']);
+    $r_pass = test_input($_POST['r_pwd']);
 //    $credit_card = test_input($_POST['card']);
     $license = test_input($_POST['license']);
-    $name = test_input($_POST['name']);
+    $name = test_input($_POST['names']);
     $phone = test_input($_POST['phone']);
     $age = test_input($_POST['age']);
     $street = test_input($_POST['street']);
     $city = test_input($_POST['city']);
     $state = test_input($_POST['state']);
     $zip = test_input($_POST['zip']);
-
-
-//    echo $password;
-//    echo $r_pass;
-//    if (empty($username) || empty($password) || empty($r_pass) || empty($first) || empty($last)) {
-//        header("Location: ../registration.php?error=emptyfields");
-//        exit();
-//    }
-//    if (!preg_match("/^[a-zA-Z0-9*$/", $username)) {
-//        header("location: ../registration.php?error=invalidusername");
-//        exit();
-//    }
-//    if ($password !== $r_pass) {
-//        header("location: ../registration.php?error=passwordcheck");
-//        exit();
-//    }
+    if (empty($username) || empty($password) || empty($name) || empty($phone) || empty($age) || empty($street) || empty($city) || empty($state) || empty($zip)){
+        header("Location: ../registration.php?error=emptyfields");
+        exit();
+    }
+    if(!preg_match('/^\w{5,}$/', $username)) {
+        header("Location: ../registration.php?error=invalidusername");
+        exit();
+    }
+    if ($password !== $r_pass) {
+        header("location: ../registration.php?error=passwordcheck");
+        exit();
+    }
     $hash = hash('sha256', $password);
     $sql = "select USER_NAME from P_CUSTOMER where USER_NAME=?";
     $stmt = mysqli_stmt_init($conn);
@@ -54,7 +50,7 @@ if (isset($_POST['signup-submit'])) {
             } else {
 //                    $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
 
-                if (!mysqli_stmt_bind_param($stmt, "sss", $username, $hash,$license, $name, $phone, $age, $street, $city, $state, $zip)) {
+                if (!mysqli_stmt_bind_param($stmt, "ssssiisssi", $username, $hash,$license, $name, $phone, $age, $street, $city, $state, $zip)) {
                     echo "error in binding";
                 }
                 if (!mysqli_stmt_execute($stmt)) {
@@ -72,11 +68,9 @@ if (isset($_POST['signup-submit'])) {
 
 
 } else {
-//    header("Location: ../index.php");
+    header("Location: ../index.php");
     exit();
 }
-
-mysqli_close($conn);
 function test_input($data)
 {
     $data = trim($data);
