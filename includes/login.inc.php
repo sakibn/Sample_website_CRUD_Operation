@@ -54,7 +54,7 @@ if (isset($_POST['login-submit'])) {
 //            $_SESSION['role'] =$role;
 //            $_SESSION['userId'] = $row['USER_ID'];
             header("Location: ../index.php?login=success"); // TODO it wont go to the page i want it to
-            $stmt->close();
+
             exit();
         }
         else {
@@ -70,26 +70,25 @@ if (isset($_POST['login-submit'])) {
 //            echo "\nresult= " . $result;
 //            echo "\nworking after bind and execute";
             $stmt->fetch();
+            $stmt->close();
             if ($hash == $result) {
 //                echo "verified";
                 session_start();
                 $_SESSION['username'] = $uid;
 //              $_SESSION['userId'] = $row['USER_ID'];
                 header("Location: ../index.php?login=success");
-                $stmt->close();
                 exit();
             } else {
 //                echo "<br>result: ".$result;
 //                echo "<br>hashed: ".$hash;
                 header("Location: ../index.php?login=fail-on-customer");
-                $stmt->close();
                 exit();
             }
         }
     }
 
 } else {
-    header("Location: ../welcome.php");
+    header("Location: ../index.php");
     exit();
 }
 
