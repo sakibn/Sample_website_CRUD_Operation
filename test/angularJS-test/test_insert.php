@@ -7,7 +7,7 @@ $message = '';
 
 $form_data = json_decode(file_get_contents("php://input"));
 //$username = 'null';
-$username = $form_data->employee_username;
+$username = $form_data->EMPLOYEE_USERNAME;
 $employee_first_name = $form_data->EMPLOYEE_FIRST_NAME;
 $employee_last_name = $form_data->EMPLOYEE_LAST_NAME;
 $password = $form_data->EMPLOYEE_PWD;
