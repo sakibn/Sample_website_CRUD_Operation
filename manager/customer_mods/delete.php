@@ -5,10 +5,10 @@ require 'dbh.inc.php';
 //}
 $message = '';
 $form_data = json_decode(file_get_contents("php://input"));
-$employee_id = $form_data->EMPLOYEE_ID;
-$statement = $conn->prepare("DELETE FROM P_EMPLOYEES WHERE EMPLOYEE_ID = ?;");
+$username = $form_data->USER_NAME;
+$statement = $conn->prepare("DELETE FROM P_CUSTOMER WHERE USER_NAME = ?;");
 //$query= ("UPDATE P_EMPLOYEES SET employee_first_name = :first_name, employee_last_name = :last_name where EMPLOYEE_ID = :id");
-$statement -> bind_param("i", $employee_id);
+$statement -> bind_param("s", $username);
 
 if($statement -> execute())
 {

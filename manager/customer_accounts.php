@@ -17,59 +17,62 @@ require "header_footer/header.php";
                         <th>Password</th>
                         <th>First Name</th>
                         <th>Last Name</th>
-                        <th>DOB yyyy-mm-dd</th>
+                        <th>Drivers License Number</th>
+                        <th>Phone Number</th>
+                        <th>Age</th>
                         <th>Street</th>
                         <th>City</th>
                         <th>State</th>
                         <th>Zip</th>
-                        <th>Salary</th>
                         <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
                         <td>
-                            <input type="text" ng-model="addData.USERNAME" class="form-control"
+                            <input type="text" ng-model="addData.USER_NAME" class="form-control"
                                    placeholder="Enter Username" ng-required="true"/>
                         </td>
                         <td>
-                            <input type="password" ng-model="addData.PWD" class="form-control" placeholder="Password"
+                            <input type="password" ng-model="addData.CUSTOMER_PWD" class="form-control" placeholder="Password"
                                    ng-required="true"/>
                         </td>
                         <td>
-                            <input type="text" ng-model="addData.EMPLOYEE_FIRST_NAME" class="form-control"
+                            <input type="text" ng-model="addData.CUSTOMER_FIRST_NAME" class="form-control"
                                    placeholder="Enter First Name" ng-required="true"/>
                         </td>
                         <td>
-                            <input type="text" ng-model="addData.EMPLOYEE_LAST_NAME" class="form-control"
+                            <input type="text" ng-model="addData.CUSTOMER_LAST_NAME" class="form-control"
                                    placeholder="Enter Last Name" ng-required="true"/>
                         </td>
                         <td>
-                            <input type="text" ng-model="addData.EMPLOYEE_DOB" class="form-control"
-                                   placeholder="Enter DOB" ng-required="true"/>
+                            <input type="text" ng-model="addData.DRIVERS_LICENSE_NUMBER" class="form-control"
+                                   placeholder="Enter DRIVERS_LICENSE_NUMBER" ng-required="true"/>
                         </td>
                         <td>
-                            <input type="text" ng-model="addData.EMPLOYEE_STREET" class="form-control"
+                            <input type="text" ng-model="addData.PHONE_NUMBER" class="form-control"
+                                   placeholder="Enter DRIVERS_LICENSE_NUMBER" ng-required="true"/>
+                        </td>
+                        <td>
+                            <input type="text" ng-model="addData.CUSTOMER_AGE" class="form-control"
+                                   placeholder="Enter DRIVERS_LICENSE_NUMBER" ng-required="true"/>
+                        </td>
+                        <td>
+                            <input type="text" ng-model="addData.CUSTOMER_STREET" class="form-control"
                                    placeholder="Enter Street Address" ng-required="true"/>
                         </td>
                         <td>
-                            <input type="text" ng-model="addData.EMPLOYEE_CITY" class="form-control"
+                            <input type="text" ng-model="addData.CUSTOMER_CITY" class="form-control"
                                    placeholder="Enter City" ng-required="true"/>
                         </td>
                         <td>
-                            <input type="text" ng-model="addData.EMPLOYEE_STATE" class="form-control"
+                            <input type="text" ng-model="addData.CUSTOMER_STATE" class="form-control"
                                    placeholder="Enter State" ng-required="true"/>
                         </td>
                         <td>
-                            <input type="text" ng-model="addData.EMPLOYEE_ZIP" class="form-control"
+                            <input type="text" ng-model="addData.CUSTOMER_ZIP" class="form-control"
                                    placeholder="Enter Zip Code" ng-required="true"/>
                         </td>
-                        <td>
-                            <input type="text" ng-model="addData.EMPLOYEE_SALARY" class="form-control"
-                                   placeholder="Enter Salary" ng-required="true"/>
-                        </td>
-
-
                         <td>
                             <button type="submit" class="btn btn-success btn-sm" ng-disabled="testform.$invalid">Add
                             </button>
@@ -80,57 +83,61 @@ require "header_footer/header.php";
                 </table>
             </form>
             <script type="text/ng-template" id="display">
-                <td>{{data.USERNAME}}</td>
-                <td>{{PWD}}</td>
-                <td>{{data.EMPLOYEE_FIRST_NAME}}</td>
-                <td>{{data.EMPLOYEE_LAST_NAME}}</td>
-                <td>{{data.EMPLOYEE_DOB}}</td>
-                <td>{{data.EMPLOYEE_STREET}}</td>
-                <td>{{data.EMPLOYEE_CITY}}</td>
-                <td>{{data.EMPLOYEE_STATE}}</td>
-                <td>{{data.EMPLOYEE_ZIP}}</td>
-                <td>{{data.EMPLOYEE_SALARY}}</td>
+                <td>{{data.USER_NAME}}</td>
+                <td>{{CUSTOMER_PWD}}</td>
+                <td>{{data.CUSTOMER_FIRST_NAME}}</td>
+                <td>{{data.CUSTOMER_LAST_NAME}}</td>
+                <td>{{data.DRIVERS_LICENSE_NUMBER}}</td>
+                <td>{{data.CUSTOMER_PHONE_NUMBER}}</td>
+                <td>{{data.CUSTOMER_AGE}}</td>
+                <td>{{data.CUSTOMER_STREET}}</td>
+                <td>{{data.CUSTOMER_CITY}}</td>
+                <td>{{data.CUSTOMER_STATE}}</td>
+                <td>{{data.CUSTOMER_ZIP}}</td>
 
                 <td>
                     <button type="button" class="btn btn-primary btn-sm" ng-click="showEdit(data)">Edit</button>
-                    <button type="button" class="btn btn-danger btn-sm" ng-click="deleteData(data.EMPLOYEE_ID)">Delete
+                    <button type="button" class="btn btn-danger btn-sm" ng-click="deleteData(data.CUSTOMER_ID)">Delete
                     </button>
                 </td>
             </script>
             <script type="text/ng-template" id="edit">
                 <td>
-                    <input type="text" ng-model="formData.USERNAME" class="form-control"/>
+                    <input type="text" ng-model="formData.USER_NAME" class="form-control"/>
                 </td>
                 <td>
-                    <input type="password" ng-model="formData.PWD" class="form-control"/>
+                    <input type="password" ng-model="formData.CUSTOMER_PWD" class="form-control"/>
                 </td>
                 <td>
-                    <input type="text" ng-model="formData.EMPLOYEE_FIRST_NAME" class="form-control"/>
+                    <input type="text" ng-model="formData.CUSTOMER_FIRST_NAME" class="form-control"/>
                 </td>
                 <td>
-                    <input type="text" ng-model="formData.EMPLOYEE_LAST_NAME" class="form-control"/>
+                    <input type="text" ng-model="formData.CUSTOMER_LAST_NAME" class="form-control"/>
                 </td>
                 <td>
-                    <input type="text" ng-model="formData.EMPLOYEE_DOB" class="form-control"/>
+                    <input type="text" ng-model="formData.DRIVERS_LICENSE_NUMBER" class="form-control"/>
                 </td>
                 <td>
-                    <input type="text" ng-model="formData.EMPLOYEE_STREET" class="form-control"/>
+                    <input type="text" ng-model="formData.CUSTOMER_PHONE_NUMBER" class="form-control"/>
                 </td>
                 <td>
-                    <input type="text" ng-model="formData.EMPLOYEE_CITY" class="form-control"/>
+                    <input type="text" ng-model="formData.CUSTOMER_AGE" class="form-control"/>
                 </td>
                 <td>
-                    <input type="text" ng-model="formData.EMPLOYEE_STATE" class="form-control"/>
+                    <input type="text" ng-model="formData.CUSTOMER_STREET" class="form-control"/>
                 </td>
                 <td>
-                    <input type="text" ng-model="formData.EMPLOYEE_ZIP" class="form-control"/>
+                    <input type="text" ng-model="formData.CUSTOMER_CITY" class="form-control"/>
                 </td>
                 <td>
-                    <input type="text" ng-model="formData.EMPLOYEE_SALARY" class="form-control"/>
+                    <input type="text" ng-model="formData.CUSTOMER_STATE" class="form-control"/>
+                </td>
+                <td>
+                    <input type="text" ng-model="formData.CUSTOMER_ZIP" class="form-control"/>
                 </td>
 
                 <td>
-                    <input type="hidden" ng-model="formData.data.EMPLOYEE_ID"/>
+                    <input type="hidden" ng-model="formData.data.USER_NAME"/> <!--TODO LOOK AT THIS-->
                     <button type="button" class="btn btn-info btn-sm" ng-click="editData()">Save</button>
                     <button type="button" class="btn btn-default btn-sm" ng-click="reset()">Cancel</button>
                 </td>
@@ -145,13 +152,13 @@ require "header_footer/header.php";
 
         app.controller('liveController', function ($scope, $http) {
             $scope.fetchData = function () {
-                $http.get('select.php').success(function (data) {
+                $http.get('customer_mods/select.php').success(function (data) {
                     $scope.namesData = data;
                 });
             };
             $scope.formData = {};
             $scope.getTemplate = function (data) {
-                if (data.EMPLOYEE_ID === $scope.formData.EMPLOYEE_ID) {
+                if (data.CUSTOMER_ID === $scope.formData.CUSTOMER_ID) {
                     return 'edit';
                 } else {
                     return 'display';
@@ -165,7 +172,7 @@ require "header_footer/header.php";
             $scope.insertData = function () {
                 $http({
                     method: "POST",
-                    url: "employee_mods/insert.php",
+                    url: "customer_mods/insert.php",
                     data: $scope.addData,
                 }).success(function (data) {
                     $scope.success = true;
@@ -188,7 +195,7 @@ require "header_footer/header.php";
             $scope.editData = function () {
                 $http({
                     method: "POST",
-                    url: "employee_mods/edit.php",
+                    url: "customer_mods/edit.php",
                     data: $scope.formData,
                 }).success(function (data) {
                     $scope.success = true;
@@ -198,12 +205,12 @@ require "header_footer/header.php";
                 });
             };
 
-            $scope.deleteData = function (EMPLOYEE_ID) {
+            $scope.deleteData = function (CUSTOMER_ID) {
                 if (confirm("Are you sure you want to remove it?")) {
                     $http({
                         method: "POST",
-                        url: "employee_mods/delete.php",
-                        data: {'EMPLOYEE_ID': EMPLOYEE_ID}
+                        url: "customer_mods/delete.php",
+                        data: {'CUSTOMER_ID': CUSTOMER_ID}
                     }).success(function (data) {
                         $scope.success = true;
                         $scope.successMessage = data.message;

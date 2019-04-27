@@ -41,7 +41,7 @@ if (isset($_POST['signup-submit'])) {
             header("location: ../registration.php?error=invalidusername%first=" . $first . "&last" . $last);
             exit();
         } else {
-            $sql = "insert into P_CUSTOMER (USER_NAME, CUSTOMER_PWD, DRIVER_LICENSE_NUMBER, CUSTOMER_NAME, CUSTOMER_PHONE_NUMBER, 
+            $sql = "insert into P_CUSTOMER (USER_NAME, CUSTOMER_PWD, DRIVERS_LICENSE_NUMBER, CUSTOMER_FIRST_NAME, CUSTOMER_PHONE_NUMBER, 
                         CUSTOMER_AGE, CUSTOMER_STREET, CUSTOMER_CITY, CUSTOMER_STATE, CUSTOMER_ZIP) values (?,?,?,?,?,?,?,?,?,?)";
             $stmt = mysqli_stmt_init($conn);
             if (!mysqli_stmt_prepare($stmt, $sql)) {

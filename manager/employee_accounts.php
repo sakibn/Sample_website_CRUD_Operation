@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-</head>
-<body>
+<?php
+require "header_footer/header.php";
+?>
+
 <div class="container" ng-app="liveApp" ng-controller="liveController" ng-init="fetchData()">
     <br>
     <div class="table-responsive">
@@ -213,3 +208,7 @@
         }
     });
 </script>
+
+<?php
+require 'header_footer/footer.php';
+?>
