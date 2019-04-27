@@ -137,7 +137,7 @@ require "header_footer/header.php";
                 </td>
 
                 <td>
-                    <input type="hidden" ng-model="formData.data.USER_NAME"/> <!--TODO LOOK AT THIS-->
+                    <input type="hidden" ng-model="formData.data.USER_NAME"/> <!--TODO LOOK AT all instances where USER_NAME is written and compaare to employee_accounts because there is something wrong-->
                     <button type="button" class="btn btn-info btn-sm" ng-click="editData()">Save</button>
                     <button type="button" class="btn btn-default btn-sm" ng-click="reset()">Cancel</button>
                 </td>
@@ -158,7 +158,7 @@ require "header_footer/header.php";
             };
             $scope.formData = {};
             $scope.getTemplate = function (data) {
-                if (data.CUSTOMER_ID === $scope.formData.USER_NAME) {
+                if (data.USER_NAME === $scope.formData.USER_NAME) {
                     return 'edit';
                 } else {
                     return 'display';
