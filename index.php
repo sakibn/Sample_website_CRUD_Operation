@@ -50,7 +50,7 @@ require "header.php";
         <?php if(isset($_SESSION['username'])): ?>
             <ul>
                 <li><a href="manager/employee_accounts.php">Employee Accounts</a></li>
-                <li><a href="users.php">User access</a></li>
+                <li><a href="manager/customer_accounts.php">Customer Accounts</a></li>
                 <li><a href="reservation.php">Reservation Form</a></li>
             </ul>
         <?php endif; ?>
