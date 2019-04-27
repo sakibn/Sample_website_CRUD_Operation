@@ -30,8 +30,8 @@ require "header_footer/header.php";
                     <tbody>
                     <tr>
                         <td>
-                            <input type="text" ng-model="addData.USER_NAME" class="form-control"
-                                   placeholder="Enter Username" ng-required="true"/>
+                            <input type="text" ng-model="addData.CUSTOMER_USERNAME" class="form-control"
+                                   placeholder="Enter Username" ng-required="true"/> <!-- TODO THIS RIGHT HERE IS WHY INSERT DOES NOT WANT TO WORK-->
                         </td>
                         <td>
                             <input type="password" ng-model="addData.CUSTOMER_PWD" class="form-control" placeholder="Password"
@@ -83,7 +83,7 @@ require "header_footer/header.php";
                 </table>
             </form>
             <script type="text/ng-template" id="display">
-                <td>{{data.USER_NAME}}</td>
+                <td>{{data.CUSTOMER_USERNAME}}</td>
                 <td>{{CUSTOMER_PWD}}</td>
                 <td>{{data.CUSTOMER_FIRST_NAME}}</td>
                 <td>{{data.CUSTOMER_LAST_NAME}}</td>
@@ -97,13 +97,13 @@ require "header_footer/header.php";
 
                 <td>
                     <button type="button" class="btn btn-primary btn-sm" ng-click="showEdit(data)">Edit</button>
-                    <button type="button" class="btn btn-danger btn-sm" ng-click="deleteData(data.USER_NAME)">Delete
+                    <button type="button" class="btn btn-danger btn-sm" ng-click="deleteData(data.CUSTOMER_USERNAME)">Delete
                     </button>
                 </td>
             </script>
             <script type="text/ng-template" id="edit">
                 <td>
-                    <input type="text" ng-model="formData.USER_NAME" class="form-control"/>
+                    <input type="text" ng-model="formData.CUSTOMER_USERNAME" class="form-control"/>
                 </td>
                 <td>
                     <input type="password" ng-model="formData.CUSTOMER_PWD" class="form-control"/>
@@ -137,7 +137,7 @@ require "header_footer/header.php";
                 </td>
 
                 <td>
-                    <input type="hidden" ng-model="formData.data.USER_NAME"/> <!--TODO LOOK AT all instances where USER_NAME is written and compaare to employee_accounts because there is something wrong-->
+                    <input type="hidden" ng-model="formData.data.CUSTOMER_USERNAME"/>
                     <button type="button" class="btn btn-info btn-sm" ng-click="editData()">Save</button>
                     <button type="button" class="btn btn-default btn-sm" ng-click="reset()">Cancel</button>
                 </td>
@@ -158,7 +158,7 @@ require "header_footer/header.php";
             };
             $scope.formData = {};
             $scope.getTemplate = function (data) {
-                if (data.USER_NAME === $scope.formData.USER_NAME) {
+                if (data.CUSTOMER_ID === $scope.formData.CUSTOMER_ID) {
                     return 'edit';
                 } else {
                     return 'display';
@@ -205,12 +205,12 @@ require "header_footer/header.php";
                 });
             };
 
-            $scope.deleteData = function (USER_NAME) {
+            $scope.deleteData = function (CUSTOMER_ID) {
                 if (confirm("Are you sure you want to remove it?")) {
                     $http({
                         method: "POST",
                         url: "customer_mods/delete.php",
-                        data: {'USER_NAME': USER_NAME}
+                        data: {'CUSTOMER_ID': CUSTOMER_ID}
                     }).success(function (data) {
                         $scope.success = true;
                         $scope.successMessage = data.message;

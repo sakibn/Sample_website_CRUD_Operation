@@ -64,7 +64,7 @@ if (isset($_POST['login-submit'])) {
             exit();
         }
         else {
-            $stmt = $conn->prepare("SELECT CUSTOMER_PWD FROM P_CUSTOMER WHERE USER_NAME=?;");
+            $stmt = $conn->prepare("SELECT CUSTOMER_PWD FROM P_CUSTOMER WHERE CUSTOMER_USERNAME=?;");
 //        print "working after the sql";
 //            print "userID = " . $uid;
             $stmt->bind_param("s", $uid);

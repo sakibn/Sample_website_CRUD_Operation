@@ -27,7 +27,7 @@ if (isset($_POST['signup-submit'])) {
         exit();
     }
     $hash = hash('sha256', $password);
-    $sql = "select USER_NAME from P_CUSTOMER where USER_NAME=?";
+    $sql = "select CUSTOMER_ID from P_CUSTOMER where CUSTOMER_USERNAME=?";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../registration.php?error=sqlerror");
@@ -41,7 +41,7 @@ if (isset($_POST['signup-submit'])) {
             header("location: ../registration.php?error=invalidusername%first=" . $first . "&last" . $last);
             exit();
         } else {
-            $sql = "insert into P_CUSTOMER (USER_NAME, CUSTOMER_PWD, DRIVERS_LICENSE_NUMBER, CUSTOMER_FIRST_NAME, CUSTOMER_PHONE_NUMBER, 
+            $sql = "insert into P_CUSTOMER (CUSTOMER_USERNAME, CUSTOMER_PWD, DRIVERS_LICENSE_NUMBER, CUSTOMER_FIRST_NAME, CUSTOMER_PHONE_NUMBER, 
                         CUSTOMER_AGE, CUSTOMER_STREET, CUSTOMER_CITY, CUSTOMER_STATE, CUSTOMER_ZIP) values (?,?,?,?,?,?,?,?,?,?)";
             $stmt = mysqli_stmt_init($conn);
             if (!mysqli_stmt_prepare($stmt, $sql)) {

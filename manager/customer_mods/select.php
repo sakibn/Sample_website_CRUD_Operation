@@ -5,7 +5,7 @@ require 'dbh.inc.php';
 if($conn->connect_error){
     die("Connection failed: ".$conn->connect_error);
 }
-$query = "SELECT * FROM P_CUSTOMER ORDER BY USER_NAME DESC";
+$query = "SELECT * FROM P_CUSTOMER ORDER BY CUSTOMER_ID DESC";
 $result = $conn ->query($query);
 $data[]="";
 if ($result->num_rows > 0) {
