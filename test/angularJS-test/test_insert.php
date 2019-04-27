@@ -7,7 +7,7 @@ $message = '';
 
 $form_data = json_decode(file_get_contents("php://input"));
 //$username = 'null';
-$username = $form_data->EMPLOYEE_USER_NAME;
+$username = $form_data->employee_username;
 $employee_first_name = $form_data->EMPLOYEE_FIRST_NAME;
 $employee_last_name = $form_data->EMPLOYEE_LAST_NAME;
 $password = $form_data->EMPLOYEE_PWD;
@@ -26,7 +26,7 @@ if (!preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$dob))
 if (!preg_match('/^\w{5,}$/', $username)) {
     exit();
 }
-$statement = $conn->prepare("insert into P_EMPLOYEES (EMPLOYEE_USER_NAME, EMPLOYEE_PWD, EMPLOYEE_FIRST_NAME, EMPLOYEE_LAST_NAME, EMPLOYEE_DOB, EMPLOYEE_STREET, EMPLOYEE_CITY, EMPLOYEE_STATE, EMPLOYEE_ZIP, EMPLOYEE_WAGE, ROLE ) VALUES (?,?,?,?,?,?,?,?,?,?,?);");
+$statement = $conn->prepare("insert into P_EMPLOYEES (EMPLOYEE_USERNAME, EMPLOYEE_PWD, EMPLOYEE_FIRST_NAME, EMPLOYEE_LAST_NAME, EMPLOYEE_DOB, EMPLOYEE_STREET, EMPLOYEE_CITY, EMPLOYEE_STATE, EMPLOYEE_ZIP, EMPLOYEE_WAGE, ROLE ) VALUES (?,?,?,?,?,?,?,?,?,?,?);");
 $statement -> bind_param("ssssssssidi", $username, $password, $employee_first_name, $employee_last_name, $dob, $street, $city,$state,$zip,$wage, $role);
 
 if($statement->execute()){

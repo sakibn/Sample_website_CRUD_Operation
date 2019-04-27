@@ -13,7 +13,7 @@ if (isset($_POST['login-submit'])) {
         header("Location: ../index.php?error=emptyfields");
         exit();
     } else {
-        $stmt = $conn->prepare("SELECT EMPLOYEE_PWD, ROLE FROM P_EMPLOYEES WHERE EMPLOYEE_USER_NAME=?;") or trigger_error($conn->error, E_USER_ERROR);
+        $stmt = $conn->prepare("SELECT EMPLOYEE_PWD, ROLE FROM P_EMPLOYEES WHERE EMPLOYEE_USERNAME=?;") or trigger_error($conn->error, E_USER_ERROR);
 //        print "userID = " . $uid;
         $stmt->bind_param("s", $uid) or trigger_error($stmt, E_USER_ERROR);
 //        print "working after the bind";
@@ -58,7 +58,7 @@ if (isset($_POST['login-submit'])) {
             exit();
         }
         else {
-            $stmt = $conn->prepare("SELECT pwd FROM P_CUSTOMER WHERE USER_NAME=?;");
+            $stmt = $conn->prepare("SELECT CUSTOMER_PWD FROM P_CUSTOMER WHERE USER_NAME=?;");
 //        print "working after the sql";
 //            print "userID = " . $uid;
             $stmt->bind_param("s", $uid);

@@ -8,7 +8,7 @@ if ($conn->connect_error) {
 $message = '';
 $form_data = json_decode(file_get_contents("php://input"));
 $employee_id = $form_data->EMPLOYEE_ID;
-$username = $form_data->EMPLOYEE_USER_NAME;
+$username = $form_data->employee_username;
 $pwd = $form_data->EMPLOYEE_PWD;
 $employee_first_name = $form_data->EMPLOYEE_FIRST_NAME;
 $employee_last_name = $form_data->EMPLOYEE_LAST_NAME;
@@ -42,7 +42,7 @@ $statement->close();
 if ($result == $pwd) {
 //    $error ='working after the if condition';
 //    echo 'working right after the if statement '.$result.'  '.$pwd;fg
-    $statement = $conn->prepare("UPDATE P_EMPLOYEES SET EMPLOYEE_USER_NAME =?,EMPLOYEE_FIRST_NAME = ?, EMPLOYEE_LAST_NAME = ?, EMPLOYEE_DOB= ?,  EMPLOYEE_STREET =?,
+    $statement = $conn->prepare("UPDATE P_EMPLOYEES SET EMPLOYEE_USERNAME =?,EMPLOYEE_FIRST_NAME = ?, EMPLOYEE_LAST_NAME = ?, EMPLOYEE_DOB= ?,  EMPLOYEE_STREET =?,
                        EMPLOYEE_CITY=?, EMPLOYEE_STATE=?, EMPLOYEE_ZIP=?, EMPLOYEE_WAGE=? WHERE EMPLOYEE_ID = ?;");
 //    echo 'working after the prepare';
 //    ini_set('display_errors', 1);
@@ -59,7 +59,7 @@ if ($result == $pwd) {
 } else {
 //    echo 'working after the else statement';
     $pwd = hash('sha256', $pwd);
-    $statement = $conn->prepare("UPDATE P_EMPLOYEES SET EMPLOYEE_USER_NAME =?,EMPLOYEE_PWD=?, EMPLOYEE_FIRST_NAME = ?, EMPLOYEE_LAST_NAME = ?, EMPLOYEE_DOB= ?,  EMPLOYEE_STREET =?,
+    $statement = $conn->prepare("UPDATE P_EMPLOYEES SET EMPLOYEE_USERNAME =?,EMPLOYEE_PWD=?, EMPLOYEE_FIRST_NAME = ?, EMPLOYEE_LAST_NAME = ?, EMPLOYEE_DOB= ?,  EMPLOYEE_STREET =?,
                        EMPLOYEE_CITY=?, EMPLOYEE_STATE=?, EMPLOYEE_ZIP=?, EMPLOYEE_WAGE=? WHERE EMPLOYEE_ID = ?;");
 //$query= ("UPDATE P_EMPLOYEES SET employee_first_name = :first_name, employee_last_name = :last_name where EMPLOYEE_ID = :id");
     $statement->bind_param('ssssssssiii', $username,$pwd, $employee_first_name, $employee_last_name,$dob, $street,$city, $state, $zip, $wage, $employee_id);

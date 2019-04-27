@@ -7,7 +7,7 @@ if (mysqli_connect_errno()) {
 $user_id = "s";
 $password ="s";
 $result ="";
-$stmt =$conn -> prepare("SELECT pwd FROM P_CUSTOMER WHERE username=?;");
+$stmt =$conn -> prepare("SELECT CUSTOMER_PWD FROM P_CUSTOMER WHERE username=?;");
     /* Bind parameters: s - string, b - blob, i - int, etc */
     $stmt ->bind_param("s", $user_id );
     echo 'working';

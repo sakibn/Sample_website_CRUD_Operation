@@ -33,7 +33,7 @@ $employee_last_name ='yolo';*/
 //    ':last_name' => $form_data->EMPLOYEE_LAST_NAME,
 //    ':id' => $form_data->EMPLOYEE_ID
 //);
-$statement = $conn->prepare("SELECT PWD FROM P_CUSTOMER WHERE USER_ID=?");
+$statement = $conn->prepare("SELECT CUSTOMER_PWD FROM P_CUSTOMER WHERE USER_ID=?");
 $statement->bind_param("i", $user_id);
 $statement->execute();
 $statement->bind_result($result);
@@ -65,7 +65,7 @@ if ($result == $pwd) {
 //    echo 'working after the else statement';
     $pwd = hash('sha256', $pwd);
     $statement = $conn->prepare("UPDATE P_CUSTOMER SET CUSTOMER_FIRST_NAME = ?, CUSTOMER_LAST_NAME = ?, USERNAME = ?,
-                      PWD = ?, DRIVER_LICENSE_NUMBER= ?, CUSTOMER_PHONE_NUMBER = ?, CUSTOMER_AGE = ?, CUSTOMER_STREET = ?, CUSTOMER_CITY = ?,
+                      CUSTOMER_PWD = ?, DRIVER_LICENSE_NUMBER= ?, CUSTOMER_PHONE_NUMBER = ?, CUSTOMER_AGE = ?, CUSTOMER_STREET = ?, CUSTOMER_CITY = ?,
                       CUSTOMER_STATE = ?, CUSTOMER_ZIP = ? WHERE USER_ID = ?;");
 //$query= ("UPDATE P_EMPLOYEES SET employee_first_name = :first_name, employee_last_name = :last_name where EMPLOYEE_ID = :id");
     $statement -> bind_param('ssssiiisssii', $customer_first_name, $customer_last_name, $username, $pwd,

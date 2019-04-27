@@ -34,7 +34,7 @@
                 <tbody>
                 <tr>
                     <td>
-                        <input type="text" ng-model="addData.EMPLOYEE_USER_NAME" class="form-control" placeholder="UserName 5CHAR" ng-required="true" minlength="5"/>
+                        <input type="text" ng-model="addData.employee_username" class="form-control" placeholder="UserName 5CHAR" ng-required="true" minlength="5"/>
                     </td>
                     <td>
                         <input type="password" ng-model="addData.EMPLOYEE_PWD" class="form-control" placeholder="Password" ng-required="true" />
@@ -75,7 +75,7 @@
             </table>
         </form>
         <script type="text/ng-template" id="display">
-            <td>{{data.EMPLOYEE_USER_NAME}}</td>
+            <td>{{data.employee_username}}</td>
             <td>{{PWD}}</td>
             <td>{{data.EMPLOYEE_FIRST_NAME}}</td>
             <td>{{data.EMPLOYEE_LAST_NAME}}</td>
@@ -93,7 +93,7 @@
         </script>
         <script type="text/ng-template" id="edit">
             <td>
-                <input type="text" ng-model="formData.EMPLOYEE_USER_NAME" class="form-control"/>
+                <input type="text" ng-model="formData.employee_username" class="form-control"/>
             </td>
             <td>
                 <input type="password" ng-model="formData.EMPLOYEE_PWD" class="form-control"/>
