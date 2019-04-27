@@ -13,7 +13,7 @@ require "header_footer/header.php";
                 <table class="table table-bordered table-striped">
                     <thead>
                     <tr>
-                        <th>User Name</th>
+                        <th>Username</th>
                         <th>Password</th>
                         <th>First Name</th>
                         <th>Last Name</th>
@@ -46,7 +46,7 @@ require "header_footer/header.php";
                         </td>
                         <td>
                             <input type="text" ng-model="addData.EMPLOYEE_DOB" class="form-control"
-                                   placeholder="DOB yyyy-mm-dd" ng-required="true"/>
+                                   placeholder="Enter DOB" ng-required="true"/>
                         </td>
                         <td>
                             <input type="text" ng-model="addData.EMPLOYEE_STREET" class="form-control"
@@ -165,7 +165,7 @@ require "header_footer/header.php";
             $scope.insertData = function () {
                 $http({
                     method: "POST",
-                    url: "required_files/insert.php",
+                    url: "employee_mods/insert.php",
                     data: $scope.addData,
                 }).success(function (data) {
                     $scope.success = true;
@@ -188,7 +188,7 @@ require "header_footer/header.php";
             $scope.editData = function () {
                 $http({
                     method: "POST",
-                    url: "required_files/edit.php",
+                    url: "employee_mods/edit.php",
                     data: $scope.formData,
                 }).success(function (data) {
                     $scope.success = true;
@@ -202,7 +202,7 @@ require "header_footer/header.php";
                 if (confirm("Are you sure you want to remove it?")) {
                     $http({
                         method: "POST",
-                        url: "required_files/delete.php",
+                        url: "employee_mods/delete.php",
                         data: {'EMPLOYEE_ID': EMPLOYEE_ID}
                     }).success(function (data) {
                         $scope.success = true;
