@@ -97,7 +97,7 @@ require "header_footer/header.php";
 
                 <td>
                     <button type="button" class="btn btn-primary btn-sm" ng-click="showEdit(data)">Edit</button>
-                    <button type="button" class="btn btn-danger btn-sm" ng-click="deleteData(data.CUSTOMER_ID)">Delete
+                    <button type="button" class="btn btn-danger btn-sm" ng-click="deleteData(data.USER_NAME)">Delete
                     </button>
                 </td>
             </script>
@@ -158,7 +158,7 @@ require "header_footer/header.php";
             };
             $scope.formData = {};
             $scope.getTemplate = function (data) {
-                if (data.CUSTOMER_ID === $scope.formData.CUSTOMER_ID) {
+                if (data.CUSTOMER_ID === $scope.formData.USER_NAME) {
                     return 'edit';
                 } else {
                     return 'display';
@@ -205,12 +205,12 @@ require "header_footer/header.php";
                 });
             };
 
-            $scope.deleteData = function (CUSTOMER_ID) {
+            $scope.deleteData = function (USER_NAME) {
                 if (confirm("Are you sure you want to remove it?")) {
                     $http({
                         method: "POST",
                         url: "customer_mods/delete.php",
-                        data: {'CUSTOMER_ID': CUSTOMER_ID}
+                        data: {'USER_NAME': USER_NAME}
                     }).success(function (data) {
                         $scope.success = true;
                         $scope.successMessage = data.message;

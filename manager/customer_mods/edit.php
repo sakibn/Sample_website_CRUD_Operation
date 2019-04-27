@@ -13,6 +13,7 @@ $pwd = $form_data->CUSTOMER_PWD;
 $customer_first_name = $form_data->CUSTOMER_FIRST_NAME;
 $customer_last_name = $form_data->CUSTOMER_LAST_NAME;
 $dln = $form_data-> DRIVERS_LICENSE_NUMBER;
+$number = $form_data->CUSTOMER_PHONE_NUMBER;
 $age = $form_data-> CUSTOMER_AGE;
 $street = $form_data -> CUSTOMER_STREET;
 $city = $form_data -> CUSTOMER_CITY;
@@ -44,13 +45,13 @@ if ($result == $pwd) {
 //    $error ='working after the if condition';
 //    echo 'working right after the if statement '.$result.'  '.$pwd;fg
     $statement = $conn->prepare("UPDATE P_CUSTOMER SET USER_NAME =?,CUSTOMER_FIRST_NAME = ?, CUSTOMER_LAST_NAME = ?, DRIVERS_LICENSE_NUMBER= ?,
-                      CUSTOMER_AGE = ?, CUSTOMER_STREET =?,CUSTOMER_CITY=?, CUSTOMER_STATE=?, CUSTOMER_ZIP=? WHERE USER_NAME = ?;");
+                      CUSTOMER_PHONE_NUMBER=?, CUSTOMER_AGE = ?, CUSTOMER_STREET =?,CUSTOMER_CITY=?, CUSTOMER_STATE=?, CUSTOMER_ZIP=? WHERE USER_NAME = ?;");
 //    echo 'working after the prepare';
 //    ini_set('display_errors', 1);
 //    ini_set('display_startup_errors', 1);
 //    error_reporting(E_ALL);
 //$query= ("UPDATE P_CUSTOMERS SET employee_first_name = :first_name, employee_last_name = :last_name where CUSTOMER_ID = :id");
-    $statement -> bind_param('ssssisssis', $username,$customer_first_name, $customer_last_name,$dln, $age, $street,$city, $state, $zip, $username);
+    $statement -> bind_param('ssssiisssis', $username,$customer_first_name, $customer_last_name, $dln, $number, $age, $street,$city, $state, $zip, $username);
 //    echo 'working after the binding';
 //$statement= $connect->prepare($query);
     if ($statement->execute()) {
@@ -60,10 +61,10 @@ if ($result == $pwd) {
 } else {
 //    echo 'working after the else statement';
     $pwd = hash('sha256', $pwd);
-    $statement = $conn->prepare("UPDATE P_EMPLOYEES SET EMPLOYEE_USERNAME =?,EMPLOYEE_PWD=?, EMPLOYEE_FIRST_NAME = ?, EMPLOYEE_LAST_NAME = ?, EMPLOYEE_DOB= ?,  EMPLOYEE_STREET =?,
-                       EMPLOYEE_CITY=?, EMPLOYEE_STATE=?, EMPLOYEE_ZIP=?, EMPLOYEE_SALARY=? WHERE EMPLOYEE_ID = ?;");
+    $statement = $conn->prepare("UPDATE P_CUSTOMER SET USER_NAME =?,CUSTOMER_PWD=?, CUSTOMER_FIRST_NAME = ?, CUSTOMER_LAST_NAME = ?, DRIVERS_LICENSE_NUMBER= ?,
+                      CUSTOMER_PHONE_NUMBER=?, CUSTOMER_STREET =?, CUSTOMER_CITY=?, CUSTOMER_STATE=?, CUSTOMER_ZIP=? WHERE USER_NAME = ?;");
 //$query= ("UPDATE P_EMPLOYEES SET employee_first_name = :first_name, employee_last_name = :last_name where EMPLOYEE_ID = :id");
-    $statement->bind_param('ssssssssiii', $username,$pwd, $employee_first_name, $employee_last_name,$dob, $street,$city, $state, $zip, $salary, $employee_id);
+    $statement->bind_param('sssssiisssis', $username,$pwd, $customer_first_name, $customer_last_name, $dln, $number, $age, $street, $city, $state, $zip, $username);
 
 //$statement= $connect->prepare($query);
     if ($statement->execute()) {
