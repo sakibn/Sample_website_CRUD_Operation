@@ -18,7 +18,7 @@
             <table class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                    <th>User Name</th>
+                    <th>Username</th>
                     <th>Password</th>
                     <th>First Name</th>
                     <th>Last Name</th>
@@ -27,14 +27,14 @@
                     <th>City</th>
                     <th>State</th>
                     <th>Zip</th>
-                    <th>Wage</th>
+                    <th>Salary</th>
                     <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <td>
-                        <input type="text" ng-model="addData.employee_username" class="form-control" placeholder="UserName 5CHAR" ng-required="true" minlength="5"/>
+                        <input type="text" ng-model="addData.EMPLOYEE_USERNAME" class="form-control" placeholder="UserName 5CHAR" ng-required="true" minlength="5"/>
                     </td>
                     <td>
                         <input type="password" ng-model="addData.EMPLOYEE_PWD" class="form-control" placeholder="Password" ng-required="true" />
@@ -61,7 +61,7 @@
                         <input type="text" ng-model="addData.EMPLOYEE_ZIP" class="form-control" placeholder="Zip" ng-required="true" />
                     </td>
                     <td>
-                        <input type="number" ng-model="addData.EMPLOYEE_WAGE" class="form-control" placeholder="wage" ng-required="true" />
+                        <input type="number" ng-model="addData.EMPLOYEE_SALARY" class="form-control" placeholder="salary" ng-required="true" />
                     </td>
 
 
@@ -75,7 +75,7 @@
             </table>
         </form>
         <script type="text/ng-template" id="display">
-            <td>{{data.employee_username}}</td>
+            <td>{{data.EMPLOYEE_USERNAME}}</td>
             <td>{{PWD}}</td>
             <td>{{data.EMPLOYEE_FIRST_NAME}}</td>
             <td>{{data.EMPLOYEE_LAST_NAME}}</td>
@@ -84,7 +84,7 @@
             <td>{{data.EMPLOYEE_CITY}}</td>
             <td>{{data.EMPLOYEE_STATE}}</td>
             <td>{{data.EMPLOYEE_ZIP}}</td>
-            <td>{{data.EMPLOYEE_WAGE}}</td>
+            <td>{{data.EMPLOYEE_SALARY}}</td>
 
             <td>
                 <button type="button" class="btn btn-primary btn-sm" ng-click="showEdit(data)">Edit</button>
@@ -93,7 +93,7 @@
         </script>
         <script type="text/ng-template" id="edit">
             <td>
-                <input type="text" ng-model="formData.employee_username" class="form-control"/>
+                <input type="text" ng-model="formData.EMPLOYEE_USERNAME" class="form-control"/>
             </td>
             <td>
                 <input type="password" ng-model="formData.EMPLOYEE_PWD" class="form-control"/>
@@ -120,7 +120,7 @@
                 <input type="text" ng-model="formData.EMPLOYEE_ZIP" class="form-control"/>
             </td>
             <td>
-                <input type="text" ng-model="formData.EMPLOYEE_WAGE" class="form-control"/>
+                <input type="text" ng-model="formData.EMPLOYEE_SALARY" class="form-control"/>
             </td>
 
             <td>

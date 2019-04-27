@@ -30,7 +30,7 @@ require "header_footer/header.php";
                     <tr>
                         <td>
                             <input type="text" ng-model="addData.USERNAME" class="form-control"
-                                   placeholder="Enter User Name" ng-required="true"/>
+                                   placeholder="Enter Username" ng-required="true"/>
                         </td>
                         <td>
                             <input type="password" ng-model="addData.PWD" class="form-control" placeholder="Password"
@@ -65,7 +65,7 @@ require "header_footer/header.php";
                                    placeholder="Enter Zip Code" ng-required="true"/>
                         </td>
                         <td>
-                            <input type="text" ng-model="addData.EMPLOYEE_WAGE" class="form-control"
+                            <input type="text" ng-model="addData.EMPLOYEE_SALARY" class="form-control"
                                    placeholder="Enter Salary" ng-required="true"/>
                         </td>
 
@@ -89,7 +89,7 @@ require "header_footer/header.php";
                 <td>{{data.EMPLOYEE_CITY}}</td>
                 <td>{{data.EMPLOYEE_STATE}}</td>
                 <td>{{data.EMPLOYEE_ZIP}}</td>
-                <td>{{data.EMPLOYEE_WAGE}}</td>
+                <td>{{data.EMPLOYEE_SALARY}}</td>
 
                 <td>
                     <button type="button" class="btn btn-primary btn-sm" ng-click="showEdit(data)">Edit</button>
@@ -126,7 +126,7 @@ require "header_footer/header.php";
                     <input type="text" ng-model="formData.EMPLOYEE_ZIP" class="form-control"/>
                 </td>
                 <td>
-                    <input type="text" ng-model="formData.EMPLOYEE_WAGE" class="form-control"/>
+                    <input type="text" ng-model="formData.EMPLOYEE_SALARY" class="form-control"/>
                 </td>
 
                 <td>
