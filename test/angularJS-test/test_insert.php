@@ -7,12 +7,10 @@ $message = '';
 
 $form_data = json_decode(file_get_contents("php://input"));
 //$username = 'null';
-
-
-$username = $form_data->USERNAME;
+$username = $form_data->EMPLOYEE_USER_NAME;
 $employee_first_name = $form_data->EMPLOYEE_FIRST_NAME;
 $employee_last_name = $form_data->EMPLOYEE_LAST_NAME;
-$password = $form_data->PWD;
+$password = $form_data->EMPLOYEE_PWD;
 $dob = $form_data-> EMPLOYEE_DOB;
 $street = $form_data -> EMPLOYEE_STREET;
 $city = $form_data -> EMPLOYEE_CITY;
@@ -36,7 +34,16 @@ if($statement->execute()){
 }
 $output = array(
     'message' => $message,
-
+//    'username' =>$username,
+//    'password' =>$password,
+//    'first' => $employee_first_name,
+//    'last' => $employee_last_name,
+//    'DOB' => $dob,
+//    'street' => $street,
+//    'city' => $city,
+//    'state' =>$state,
+//    'zip' => $zip,
+//    'wage' =>$wage,
 );
 
 echo json_encode($output);
