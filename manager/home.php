@@ -2,8 +2,8 @@
 define('MyConst', TRUE);
 require "header_footer/header.php";
 //require "";
-if($_SESSION['dog']!= 4567 ){
-    header("location: ../index.php?error=wrong_place");
+if($_SESSION['dog']!= 67 ){
+    header("location: ../index.php?error=ever_felt_like_you_are_in_a_wrong_place?");
 }
 ?>
 <section class="main-container">

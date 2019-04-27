@@ -9,26 +9,30 @@ if (isset($_POST['login-submit'])) {
     $uid = test_input($_POST['uid']);
     $pwd = test_input($_POST['pwd']);
     $hash =(hash('sha256', $pwd));
+//    echo $uid.$hash;
+//    exit();
     if (empty($uid) || empty($pwd)) {
         header("Location: ../index.php?error=emptyfields");
         exit();
     } else {
         $stmt = $conn->prepare("SELECT EMPLOYEE_PWD, ROLE FROM P_EMPLOYEES WHERE EMPLOYEE_USERNAME=?;") or trigger_error($conn->error, E_USER_ERROR);
 //        print "userID = " . $uid;
-        $stmt->bind_param("s", $uid) or trigger_error($stmt, E_USER_ERROR);
+        $stmt->bind_param("s", $uid) or trigger_error($stmt->error, E_USER_ERROR);
 //        print "working after the bind";
         $stmt->execute() or trigger_error($stmt->error, E_USER_ERROR);
 //        print "working after the execute";
 //        echo "\nworking after bind and execute";
+
 //        $stmt->bind_result($result);
 //        $stmt->fetch();
         ($result = $stmt->get_result()) or trigger_error($stmt->error, E_USER_ERROR);
         $data[] = "";
 //        echo  '<br>working before the fetch';
+
         if ($result->num_rows > 0) {
             // output data of each row
 //            echo  'working after the condition<br>';
-//            var_dump($result);
+//
             while ($row = $result->fetch_assoc()) {
 //        echo "UserName: " . $row["USERNAME"]. " - Role " . $row["ROLE"]. "<br>";
                 $data[] = $row;
@@ -51,6 +55,8 @@ if (isset($_POST['login-submit'])) {
             session_start();
             $_SESSION['username'] = $uid;
             $_SESSION['dog'] = $data[1]["ROLE"];
+//            var_dump($_SESSION);
+//            exit();
 //            $_SESSION['role'] =$role;
 //            $_SESSION['userId'] = $row['USER_ID'];
             header("Location: ../index.php?login=success"); // TODO it wont go to the page i want it to (no,it does)

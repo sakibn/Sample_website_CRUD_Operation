@@ -18,32 +18,32 @@ $state = $form_data -> EMPLOYEE_STATE;
 $zip = $form_data -> EMPLOYEE_ZIP;
 $salary = $form_data -> EMPLOYEE_SALARY;
 $password = hash('sha256',$password);
-$role =2;
+$role =67;
 
-if (!preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$dob)) {
-   exit;
-}
-if (!preg_match('/^\w{5,}$/', $username)) {
-    exit();
-}
+//if (!preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$dob)) {
+//   exit;
+//}
+//if (!preg_match('/^\w{5,}$/', $username)) {
+//    exit();
+//}
 $statement = $conn->prepare("insert into P_EMPLOYEES (EMPLOYEE_USERNAME, EMPLOYEE_PWD, EMPLOYEE_FIRST_NAME, EMPLOYEE_LAST_NAME, EMPLOYEE_DOB, EMPLOYEE_STREET, EMPLOYEE_CITY, EMPLOYEE_STATE, EMPLOYEE_ZIP, EMPLOYEE_SALARY, ROLE ) VALUES (?,?,?,?,?,?,?,?,?,?,?);");
-$statement -> bind_param("ssssssssidi", $username, $password, $employee_first_name, $employee_last_name, $dob, $street, $city,$state,$zip,$salary, $role);
+$statement -> bind_param("ssssssssiii", $username, $password, $employee_first_name, $employee_last_name, $dob, $street, $city,$state,$zip,$salary, $role);
 
 if($statement->execute()){
     $message = 'Data Inserted';
 }
 $output = array(
     'message' => $message,
-//    'username' =>$username,
-//    'password' =>$password,
-//    'first' => $employee_first_name,
-//    'last' => $employee_last_name,
-//    'DOB' => $dob,
-//    'street' => $street,
-//    'city' => $city,
-//    'state' =>$state,
-//    'zip' => $zip,
-//    'salary' =>$salary,
+    'username' =>$username,
+    'password' =>$password,
+    'first' => $employee_first_name,
+    'last' => $employee_last_name,
+    'DOB' => $dob,
+    'street' => $street,
+    'city' => $city,
+    'state' =>$state,
+    'zip' => $zip,
+    'salary' =>$salary,
 );
 
 echo json_encode($output);
