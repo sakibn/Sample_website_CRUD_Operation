@@ -88,12 +88,14 @@ require "header_footer/header.php";
                 <td>{{data.CUSTOMER_FIRST_NAME}}</td>
                 <td>{{data.CUSTOMER_LAST_NAME}}</td>
                 <td>{{data.DRIVERS_LICENSE_NUMBER}}</td>
+                <td>{{data.DRIVERS_LICENSE_NUMBER}}</td>
                 <td>{{data.CUSTOMER_PHONE_NUMBER}}</td>
                 <td>{{data.CUSTOMER_AGE}}</td>
                 <td>{{data.CUSTOMER_STREET}}</td>
                 <td>{{data.CUSTOMER_CITY}}</td>
                 <td>{{data.CUSTOMER_STATE}}</td>
                 <td>{{data.CUSTOMER_ZIP}}</td>
+
 
                 <td>
                     <button type="button" class="btn btn-primary btn-sm" ng-click="showEdit(data)">Edit</button>
@@ -221,5 +223,5 @@ require "header_footer/header.php";
         });
     </script>
 <?php
-require 'header_footer/footer.php';
-?>
+//require 'header_footer/footer.php';
+//?>

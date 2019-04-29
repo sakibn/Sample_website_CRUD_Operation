@@ -8,12 +8,11 @@ $message = '';
 $form_data = json_decode(file_get_contents("php://input"));
 //$username = 'null';
 $model = $form_data->MODEL;
-$brand = $form_data->BRAND;
-$production_year = $form_data->PRODUCTION_YEAR;
-$color = $form_data-> COLOR;
+$shop_id = $form_data->SHOP_ID;
+$mileage =$form_data->MILEAGE;
 
-$statement = $conn->prepare("insert into P_CAR_MODEL (MODEL, BRAND, PRODUCTION_YEAR, COLOR ) VALUES (?,?,?,?);");
-$statement -> bind_param("ssss", $model, $brand, $production_year, $color);
+$statement = $conn->prepare("insert into P_CAR (MODEL, SHOP_ID, MILEAGE ) VALUES (?,?,?);");
+$statement -> bind_param("sii", $model, $shop_id, $mileage);
 
 if($statement->execute()){
     $message = 'Data Inserted';

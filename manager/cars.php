@@ -100,7 +100,7 @@ if($_SESSION['dog']!= 67) {
             {
                 $http({
                     method: "POST",
-                    url: "test_insert.php",
+                    url: "car_mods/insert.php",
                     data:$scope.addData,
                 }).success(function(data){
                     $scope.success = true;
@@ -126,7 +126,7 @@ if($_SESSION['dog']!= 67) {
             {
                 $http({
                     method:"POST",
-                    url:"test_edit.php",
+                    url:"car_mods/edit.php",
                     data:$scope.formData,
                 }).success(function(data){
                     $scope.success = true;
@@ -142,7 +142,7 @@ if($_SESSION['dog']!= 67) {
                 {
                     $http({
                         method:"POST",
-                        url:"test_delete.php",
+                        url:"car_mods/delete.php",
                         data:{'REGISTRATION_NUMBER':REGISTRATION_NUMBER}
                     }).success(function(data){
                         $scope.success = true;

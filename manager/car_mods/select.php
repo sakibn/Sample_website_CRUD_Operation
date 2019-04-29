@@ -59,3 +59,4 @@ if ($result->num_rows > 0) {
     echo json_encode($data);
 //    echo json_decode($data);
 }
+$statement->close();

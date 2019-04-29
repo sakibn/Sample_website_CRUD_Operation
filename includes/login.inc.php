@@ -25,7 +25,7 @@ if (isset($_POST['login-submit'])) {
 
 //        $stmt->bind_result($result);
 //        $stmt->fetch();
-        ($result = $stmt->get_result()) or trigger_error($stmt->error, E_USER_ERROR);
+        $result = $stmt->get_result()or trigger_error($stmt->error, E_USER_ERROR);
         $data[] = "";
 //        echo  '<br>working before the fetch';
 
@@ -44,6 +44,8 @@ if (isset($_POST['login-submit'])) {
 //            json_encode($row);
 //            echo $row;
 //            exit();
+        }else {
+            header("Location: ../index.php?error=emptyfields");
         }
         $stmt->close();
 //        echo '<br>working after the condition';
@@ -55,12 +57,12 @@ if (isset($_POST['login-submit'])) {
             session_start();
             $_SESSION['username'] = $uid;
             $_SESSION['dog'] = $data[1]["ROLE"];
+            $_SESSION['cat'] = 'yeah';
 //            var_dump($_SESSION);
 //            exit();
 //            $_SESSION['role'] =$role;
 //            $_SESSION['userId'] = $row['USER_ID'];
-            header("Location: ../index.php?login=success"); // TODO it wont go to the page i want it to (no,it does)
-
+            header("Location: ../index.php?login=success");
             exit();
         }
         else {
