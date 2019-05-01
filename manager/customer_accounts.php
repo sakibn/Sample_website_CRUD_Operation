@@ -31,7 +31,7 @@ require "header_footer/header.php";
                     <tr>
                         <td>
                             <input type="text" ng-model="addData.CUSTOMER_USERNAME" class="form-control"
-                                   placeholder="Enter Username" ng-required="true"/> <!-- TODO THIS RIGHT HERE IS WHY INSERT DOES NOT WANT TO WORK-->
+                                   placeholder="Enter Username" ng-required="true"/>
                         </td>
                         <td>
                             <input type="password" ng-model="addData.CUSTOMER_PWD" class="form-control" placeholder="Password"
