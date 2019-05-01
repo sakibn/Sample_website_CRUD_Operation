@@ -50,7 +50,7 @@ require "header_footer/header.php";
                                    placeholder="Enter DRIVERS_LICENSE_NUMBER" ng-required="true"/>
                         </td>
                         <td>
-                            <input type="text" ng-model="addData.PHONE_NUMBER" class="form-control"
+                            <input type="text" ng-model="addData.CUSTOMER_PHONE_NUMBER" class="form-control"
                                    placeholder="Enter DRIVERS_LICENSE_NUMBER" ng-required="true"/>
                         </td>
                         <td>
@@ -88,7 +88,6 @@ require "header_footer/header.php";
                 <td>{{data.CUSTOMER_FIRST_NAME}}</td>
                 <td>{{data.CUSTOMER_LAST_NAME}}</td>
                 <td>{{data.DRIVERS_LICENSE_NUMBER}}</td>
-                <td>{{data.DRIVERS_LICENSE_NUMBER}}</td>
                 <td>{{data.CUSTOMER_PHONE_NUMBER}}</td>
                 <td>{{data.CUSTOMER_AGE}}</td>
                 <td>{{data.CUSTOMER_STREET}}</td>
@@ -99,7 +98,7 @@ require "header_footer/header.php";
 
                 <td>
                     <button type="button" class="btn btn-primary btn-sm" ng-click="showEdit(data)">Edit</button>
-                    <button type="button" class="btn btn-danger btn-sm" ng-click="deleteData(data.CUSTOMER_USERNAME)">Delete
+                    <button type="button" class="btn btn-danger btn-sm" ng-click="deleteData(data.CUSTOMER_ID)">Delete
                     </button>
                 </td>
             </script>
@@ -139,7 +138,7 @@ require "header_footer/header.php";
                 </td>
 
                 <td>
-                    <input type="hidden" ng-model="formData.data.CUSTOMER_USERNAME"/>
+                    <input type="hidden" ng-model="formData.data.CUSTOMER_ID"/>
                     <button type="button" class="btn btn-info btn-sm" ng-click="editData()">Save</button>
                     <button type="button" class="btn btn-default btn-sm" ng-click="reset()">Cancel</button>
                 </td>
