@@ -9,8 +9,9 @@ if($_SESSION['cat']!= 'yeah'){
 //var_dump($_SESSION);
 if ($_SESSION['dog'] =67 && $_SESSION['dog'] != 2){
     include ('links/manager.php');
-}elseif ($_SESSION['dog'] =2)
-    include ('links/employees.php')
+}elseif ($_SESSION['dog'] =2) {
+    include('links/employees.php');
+}
 ?>
 
 
