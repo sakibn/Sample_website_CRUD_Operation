@@ -13,6 +13,7 @@ include '../../header.php';
 
 </div>
 
+</form>
 
 <?
 var_dump($data);
