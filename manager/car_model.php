@@ -57,7 +57,7 @@ if($_SESSION['cat']!= 'yeah') {
                 <td>{{data.COLOR}}</td>
                 <td>
                     <button type="button" class="btn btn-primary btn-sm" ng-click="showEdit(data)">Edit</button>
-                    <button type="button" class="btn btn-danger btn-sm" ng-click="deleteData(data.MODEL)">Delete</button>
+                    <button type="button" class="btn btn-danger btn-sm" ng-click="deleteData(data.CAR_MODEL_ID)">Delete</button>
                 </td>
             </script>
             <script type="text/ng-template" id="edit">
@@ -74,7 +74,7 @@ if($_SESSION['cat']!= 'yeah') {
                     <input type="text" ng-model="formData.COLOR" class="form-control"/>
                 </td>
                 <td>
-                    <input type="hidden" ng-model="formData.data.MODEL"/>
+                    <input type="hidden" ng-model="formData.data.CAR_MODEL_ID"/>
                     <button type="button" class="btn btn-info btn-sm" ng-click="editData()">Save</button>
                     <button type="button" class="btn btn-default btn-sm" ng-click="reset()">Cancel</button>
                 </td>
@@ -95,7 +95,7 @@ if($_SESSION['cat']!= 'yeah') {
             };
             $scope.formData = {};
             $scope.getTemplate = function (data) {
-                if (data.MODEL === $scope.formData.MODEL) {
+                if (data.CAR_MODEL_ID === $scope.formData.CAR_MODEL_ID) {
                     return 'edit';
                 } else {
                     return 'display';
@@ -146,14 +146,14 @@ if($_SESSION['cat']!= 'yeah') {
                 });
             };
 
-            $scope.deleteData = function(MODEL)
+            $scope.deleteData = function(CAR_MODEL_ID)
             {
                 if(confirm("Are you sure you want to remove it?"))
                 {
                     $http({
                         method:"POST",
                         url:"car_model_mods/delete.php",
-                        data:{'MODEL':MODEL}
+                        data:{'CAR_MODEL_ID':CAR_MODEL_ID}
                     }).success(function(data){
                         $scope.success = true;
                         $scope.successMessage = data.message;
