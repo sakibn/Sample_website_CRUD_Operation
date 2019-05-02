@@ -1,5 +1,5 @@
 <?php
-include'../../header.php';
+include '../../header.php';
 ?>
 
 <div ng-app="myApp" ng-controller="myCtrl" ng-init="fetchData()">
@@ -13,7 +13,6 @@ include'../../header.php';
 
 </div>
 
-</form>
 
 <?
 var_dump($data);

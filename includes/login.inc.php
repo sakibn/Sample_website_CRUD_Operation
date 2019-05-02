@@ -58,16 +58,13 @@ if (isset($_POST['login-submit'])) {
             $_SESSION['username'] = $uid;
             $_SESSION['dog'] = $data[1]["ROLE"];
             $_SESSION['cat'] = 'yeah';
-
-//            var_dump($_SESSION);
-//            exit();
 //            $_SESSION['role'] =$role;
 //            $_SESSION['userId'] = $row['USER_ID'];
 //            if(isset($_SESSION['dog'])&& $_SESSION['dog']==67) {
 //                header("Location: ../manager/home.php");
 //            }
 //            else{
-                header("Location: ../index.php");
+                header("Location: ../manager/home.php");
 //            }
             exit();
         }

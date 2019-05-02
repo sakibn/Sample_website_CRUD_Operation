@@ -6,7 +6,8 @@ require "header_footer/header.php";
 if($_SESSION['cat']!= 'yeah'){
     header("location: ../index.php?error=ever_felt_like_you_are_in_a_wrong_place?");
 }
-if ($_SESSION['dog'] =67){
+//var_dump($_SESSION);
+if ($_SESSION['dog'] =67 && $_SESSION['dog'] != 2){
     include ('links/manager.php');
 }elseif ($_SESSION['dog'] =2)
     include ('links/employees.php')
