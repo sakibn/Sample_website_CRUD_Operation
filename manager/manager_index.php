@@ -40,7 +40,7 @@
 <body>
 
 <?php
-require "header.php";
+require "header_footer/header.php";
 ?>
 <section class="main-container">
     <div class="main-wrapper">
@@ -48,9 +48,10 @@ require "header.php";
 
         <?php if(isset($_SESSION['username'])): ?>
             <ul>
-                <li><a href="database.php">Database/excel</a></li>
-                <li><a href="users.php">User access</a></li>
-                <li><a href="inventory.php">Available Inventory</a></li>
+                <li><a href="manager/employee_accounts.php">Employee Accounts</a></li>
+                <li><a href="manager/customer_accounts.php">Customer Accounts</a></li>
+                <li><a href="manager/cars.php">Cars</a></li>
+                <li><a href="manager/car_model.php">Car Model</a></li>
                 <li><a href="reservation.php">Reservation Form</a></li>
             </ul>
         <?php endif; ?>

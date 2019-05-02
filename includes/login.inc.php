@@ -63,7 +63,12 @@ if (isset($_POST['login-submit'])) {
 //            exit();
 //            $_SESSION['role'] =$role;
 //            $_SESSION['userId'] = $row['USER_ID'];
-            header("Location: ../index.php?login=success");
+//            if(isset($_SESSION['dog'])&& $_SESSION['dog']==67) {
+//                header("Location: ../manager/home.php");
+//            }
+//            else{
+                header("Location: ../index.php");
+//            }
             exit();
         }
         else {
@@ -87,6 +92,12 @@ if (isset($_POST['login-submit'])) {
                 $timeout=60;
                 setcookie("chair",$_SESSION['username'],time()+$timeout,"/",NULL);
 //              $_SESSION['userId'] = $row['USER_ID'];
+                //            if(isset($_SESSION['dog'])&& $_SESSION['dog']==67) {
+//                header("Location: ../manager/home.php");
+//            }
+//            else{
+//                header("Location: ..index.php");
+//            }
                 header("Location: ../index.php?login=success");
                 exit();
             } else {
