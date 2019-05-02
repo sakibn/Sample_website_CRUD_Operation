@@ -42,11 +42,11 @@ if($statement->execute()){
 
 //select.php
 //include('database_connection.php');
-require 'dbh.test.php';
+require 'dbh.inc.php';
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-$query = "SELECT * FROM P_EMPLOYEES ORDER BY EMPLOYEE_ID DESC";
+$query = "SELECT * FROM car_details";
 $result = $conn->query($query);
 $data[] = "";
 if ($result->num_rows > 0) {
@@ -56,6 +56,7 @@ if ($result->num_rows > 0) {
 //        echo "UserName: " . $row["USERNAME"]. " - Role " . $row["ROLE"]. "<br>";
         $data[] = $row;
     }
+    $conn->close();
     unset($data[0]);
 //    var_dump($data);
 //    array_pop($data);

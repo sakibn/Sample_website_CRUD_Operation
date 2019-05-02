@@ -20,6 +20,7 @@ $color = $form_data->COLOR;
     if ($statement->execute()) {
         $message = 'Data Successfully Edited without password';
     }
+$conn->close();
 $output = array(
     'message' => $message,
 );

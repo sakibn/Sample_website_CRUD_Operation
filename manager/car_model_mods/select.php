@@ -56,6 +56,7 @@ if ($result->num_rows > 0) {
 //        echo "UserName: " . $row["USERNAME"]. " - Role " . $row["ROLE"]. "<br>";
         $data[] = $row;
     }
+    $conn->close();
     echo json_encode($data);
 //    echo json_decode($data);
 }

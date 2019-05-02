@@ -1,5 +1,9 @@
 <?php
 require "header_footer/header.php";
+if($_SESSION['dog'] =!67){
+    header("location: home.php?error=ever_felt_like_you_are_in_a_wrong_place?");
+    exit();
+};
 ?>
 
 <div class="container" ng-app="liveApp" ng-controller="liveController" ng-init="fetchData()">

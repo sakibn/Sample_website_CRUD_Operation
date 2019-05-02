@@ -14,7 +14,7 @@ if($statement -> execute())
 {
     $message = 'Data Successfully Deleted';
 }
-
+$conn->close();
 $output = array(
     'message' => $message
 );

@@ -1,4 +1,7 @@
 <?php
+if($_SESSION['dog'] =!67){
+    header("location: ../home.php?error=ever_felt_like_you_are_in_a_wrong_place?");
+};
 //select.php
 //include('database_connection.php');
 require 'dbh.inc.php';
@@ -15,7 +18,9 @@ if ($result->num_rows > 0) {
 //        echo "UserName: " . $row["USERNAME"]. " - Role " . $row["ROLE"]. "<br>";
         $data[] = $row;
     }
+    unset($data[0]);
     echo json_encode($data);
+
 //    echo json_decode($data);
 }
 

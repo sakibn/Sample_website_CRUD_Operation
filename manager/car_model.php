@@ -1,7 +1,9 @@
 <?php
 require "header_footer/header.php";
-if($_SESSION['dog']!= 67) {
+if($_SESSION['cat']!= 'yeah') {
     header("location: ../index.php?error=wrong_place");
+    exit();
+//    var_dump($_SESSION);
 }
 //elseif($_SESSION['dog']!= 2){
 //    header("location: ../index.php?error=wrong_place");

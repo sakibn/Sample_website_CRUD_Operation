@@ -1,5 +1,7 @@
 <?php
-
+if($_SESSION['dog'] =!67){
+    header("location: ../home.php?error=ever_felt_like_you_are_in_a_wrong_place?");
+};
 require 'dbh.inc.php';
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);

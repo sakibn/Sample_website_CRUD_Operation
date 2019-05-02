@@ -18,6 +18,7 @@ $statement -> bind_param("ssss", $model, $brand, $production_year, $color);
 if($statement->execute()){
     $message = 'Data Inserted';
 }
+$conn->close();
 $output = array(
     'message' => $message,
 );

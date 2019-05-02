@@ -46,7 +46,7 @@ require 'dbh.inc.php';
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-$query = "SELECT * FROM P_CAR ORDER BY REGISTRATION_NUMBER DESC";
+$query = "SELECT * FROM P_CAR";
 $result = $conn->query($query);
 $data[] = "";
 if ($result->num_rows > 0) {
@@ -56,7 +56,8 @@ if ($result->num_rows > 0) {
 //        echo "UserName: " . $row["USERNAME"]. " - Role " . $row["ROLE"]. "<br>";
         $data[] = $row;
     }
+    unset($data[0]);
+    $conn->close();
     echo json_encode($data);
 //    echo json_decode($data);
 }
-$statement->close();

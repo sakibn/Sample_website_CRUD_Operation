@@ -58,6 +58,7 @@ if (isset($_POST['login-submit'])) {
             $_SESSION['username'] = $uid;
             $_SESSION['dog'] = $data[1]["ROLE"];
             $_SESSION['cat'] = 'yeah';
+
 //            var_dump($_SESSION);
 //            exit();
 //            $_SESSION['role'] =$role;
@@ -83,6 +84,8 @@ if (isset($_POST['login-submit'])) {
 //                echo "verified";
                 session_start();
                 $_SESSION['username'] = $uid;
+                $timeout=60;
+                setcookie("chair",$_SESSION['username'],time()+$timeout,"/",NULL);
 //              $_SESSION['userId'] = $row['USER_ID'];
                 header("Location: ../index.php?login=success");
                 exit();
