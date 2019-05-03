@@ -1,8 +1,8 @@
 <?php
-if($_SESSION['cat'] =!'yeah'){
-    header("location: ../home.php?error=ever_felt_like_you_are_in_a_wrong_place?");
-    exit();
-};
+//if($_SESSION['cat'] =! 'yeah'|| isset($_SESSION['cat'])){
+//    header("location: ../index.php?error=ever_felt_like_you_are_in_a_wrong_place?");
+//    exit();
+//};
 require 'dbh.inc.php';
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
@@ -22,18 +22,29 @@ $street = $form_data -> CUSTOMER_STREET;
 $city = $form_data -> CUSTOMER_CITY;
 $state = $form_data -> CUSTOMER_STATE;
 $zip = $form_data -> CUSTOMER_ZIP;
-
+if(empty($username)||empty($password)||empty($customer_first_name)||empty($customer_last_name)
+    ||empty($dln)||empty($number)||empty($age)||empty($street)
+    ||empty($city)||empty($state)||empty($zip)){
+    exit();
+}
 $password = hash('sha256',$password);
-$role =2;
-
+//if (!preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$number)) {
+//    exit;
+//}
+//if (!preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$age)) {
+//    exit;
+//}
 //if (!preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$dln)) {
+//    exit;
+//}
+//if (!preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$zip)) {
 //    exit;
 //}
 if (!preg_match('/^\w{5,}$/', $username)) {
     exit();
 }
 $statement = $conn->prepare("insert into P_CUSTOMER (CUSTOMER_USERNAME, CUSTOMER_PWD, DRIVERS_LICENSE_NUMBER, CUSTOMER_FIRST_NAME, CUSTOMER_LAST_NAME, CUSTOMER_PHONE_NUMBER,
-                        CUSTOMER_AGE, CUSTOMER_STREET, CUSTOMER_CITY, CUSTOMER_STATE, CUSTOMER_ZIP) VALUES (?,?,?,?,?,?,?,?,?,?,?);"); // TODO DOES ROLE BELONG IN THIS QUERY/TABLE
+                        CUSTOMER_AGE, CUSTOMER_STREET, CUSTOMER_CITY, CUSTOMER_STATE, CUSTOMER_ZIP) VALUES (?,?,?,?,?,?,?,?,?,?,?);"); // TODO DOES ROLE BELONG IN THIS QUERY/TABLE? no
 $statement -> bind_param("ssisssisssi", $username, $password, $dln, $customer_first_name, $customer_last_name, $number, $age, $street, $city, $state, $zip);
 
 if($statement->execute()){

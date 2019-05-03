@@ -1,6 +1,6 @@
 <?php
 require "header_footer/header.php";
-if($_SESSION['dog'] =!67){
+if($_SESSION['dog'] =!67 ){
     header("location: home.php?error=ever_felt_like_you_are_in_a_wrong_place?");
     exit();
 };
@@ -45,7 +45,7 @@ if($_SESSION['dog'] =!67){
                         <input type="text" ng-model="addData.EMPLOYEE_LAST_NAME" class="form-control" placeholder="Enter Last Name" ng-required="true" />
                     </td>
                     <td>
-                        <input type="text" ng-model="addData.EMPLOYEE_DOB" class="form-control" placeholder="DOB yyyy-mm-dd" ng-required="true" />
+                        <input type="date" ng-model="addData.EMPLOYEE_DOB" class="form-control" placeholder="DOB yyyy-mm-dd" ng-required="true" />
                     </td>
                     <td>
                         <input type="text" ng-model="addData.EMPLOYEE_STREET" class="form-control" placeholder="Street" ng-required="true" />
@@ -57,7 +57,7 @@ if($_SESSION['dog'] =!67){
                         <input type="text" ng-model="addData.EMPLOYEE_STATE" class="form-control" placeholder="State" ng-required="true" />
                     </td>
                     <td>
-                        <input type="text" ng-model="addData.EMPLOYEE_ZIP" class="form-control" placeholder="Zip" ng-required="true" />
+                        <input type="number" ng-model="addData.EMPLOYEE_ZIP" class="form-control" placeholder="Zip" ng-required="true" />
                     </td>
                     <td>
                         <input type="number" ng-model="addData.EMPLOYEE_SALARY" class="form-control" placeholder="salary" ng-required="true" />
@@ -104,7 +104,7 @@ if($_SESSION['dog'] =!67){
                 <input type="text" ng-model="formData.EMPLOYEE_LAST_NAME" class="form-control"/>
             </td>
             <td>
-                <input type="text" ng-model="formData.EMPLOYEE_DOB" class="form-control"/>
+                <input type="date" ng-model="formData.EMPLOYEE_DOB" class="form-control"/>
             </td>
             <td>
                 <input type="text" ng-model="formData.EMPLOYEE_STREET" class="form-control"/>

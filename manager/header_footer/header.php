@@ -19,10 +19,10 @@ session_start();
         <div class="main-wrapper">
             <ul>
                 <li><a href="../index.php">Home</a></li>
-                <li><a href="../manager/employee_accounts.php">Employee Accounts</a></li>
-                <li><a href="../manager/customer_accounts.php">Customer Accounts</a></li>
-                <li><a href="../manager/cars.php">Cars</a></li>
-                <li><a href="../manager/car_model.php">Car Model</a></li>
+<!--                <li><a href="../manager/employee_accounts.php">Employee Accounts</a></li>-->
+<!--                <li><a href="../manager/customer_accounts.php">Customer Accounts</a></li>-->
+<!--                <li><a href="../manager/cars.php">Cars</a></li>-->
+<!--                <li><a href="../manager/car_model.php">Car Model</a></li>-->
             </ul>
             <div class="nav-login">
                 <?php

@@ -1,14 +1,15 @@
 <?php
-if($_SESSION['cat'] =!'yeah'){
-//    header("location: ../home.php?error=ever_felt_like_you_are_in_a_wrong_place?");
-    exit();
-};
+
 //select.php
 //include('database_connection.php');
 require 'dbh.inc.php';
 if($conn->connect_error){
     die("Connection failed: ".$conn->connect_error);
 }
+//if(isset($_SESSION['cat'])){
+//    header("location: ../index.php?error=ever_felt_like_you_are_in_a_wrong_place?");
+//    exit();
+//};
 $query = "SELECT * FROM P_CUSTOMER ORDER BY CUSTOMER_ID DESC";
 $result = $conn ->query($query);
 $data[]="";
@@ -19,6 +20,7 @@ if ($result->num_rows > 0) {
 //        echo "UserName: " . $row["USERNAME"]. " - Role " . $row["ROLE"]. "<br>";
         $data[] = $row;
     }
+    unset($data[0]);
     echo json_encode($data);
 //    echo json_decode($data);
 }

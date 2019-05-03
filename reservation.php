@@ -1,3 +1,6 @@
+<?
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,7 +73,6 @@ body {
 </form>
 
 <?
-var_dump($data);
 include '../../footer.php';
 ?>
 <script>

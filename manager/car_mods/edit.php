@@ -1,5 +1,9 @@
 <?php
 require 'dbh.inc.php';
+if($_SESSION['cat'] =! 'yeah'){
+    header("location: ../index.php?error=ever_felt_like_you_are_in_a_wrong_place?edit");
+    exit();
+};
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }

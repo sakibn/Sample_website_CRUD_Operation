@@ -1,15 +1,14 @@
 <?php
-
-if(isset($_POST['rent_submit']) ){
-    $car = test_input($_POST['car']);
-    $username=$_COOKIE['chair'];
-//    var_dump($username);
-////    var_dump($car);
-////    var_dump($_COOKIE[]);
-//    exit();
-
+if(isset($_POST['rent_submit'])) {
+    echo 'working';
+//    $car = test_input($_POST['car']);
+//    $username = $_COOKIE['chair'];
+    var_dump($username);
 //    var_dump($car);
-    if(empty($car)){
+//    var_dump($_COOKIE[]);
+    exit();
+//    var_dump($car);
+    if (empty($car)) {
         header("Location: ../index.php?error=emptyfields");
         exit();
     }
@@ -19,15 +18,15 @@ if(isset($_POST['rent_submit']) ){
         exit();
     }
     $stmt = $conn->prepare("CALL ADD_RESERVATION(?, ?);")
-                or trigger_error($conn->error, E_USER_ERROR);
-    $stmt->bind_param('si', $username,$car)
-            or trigger_error($conn->error, E_USER_ERROR);
-    if($stmt->execute()){
+    or trigger_error($conn->error, E_USER_ERROR);
+    $stmt->bind_param('si', $username, $car)
+    or trigger_error($conn->error, E_USER_ERROR);
+    if ($stmt->execute()) {
         echo '<button onclick="goBack()">Go Back</button>';
-    }else {
+    } else {
         trigger_error($conn->error, E_USER_ERROR);
     }
-}else {
+} else {
     header("Location: ../index.php");
     exit();
 }
@@ -39,10 +38,11 @@ function test_input($data)
     $data = htmlspecialchars($data);
     return $data;
 }
+
 ?>
 
 <script>
-function goBack() {
-  window.history.back();
-}
+    function goBack() {
+        window.history.back();
+    }
 </script>

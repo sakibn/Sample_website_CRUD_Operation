@@ -1,6 +1,6 @@
 <?php
 require "header_footer/header.php";
-if($_SESSION['cat']!= 'yeah') {
+if(($_SESSION['cat']!= 'yeah')){
     header("location: ../index.php?error=wrong_place");
     exit();
 //    var_dump($_SESSION);
@@ -37,10 +37,10 @@ if($_SESSION['cat']!= 'yeah') {
                             <input type="text" ng-model="addData.BRAND" class="form-control" placeholder="Brand" ng-required="true" required/>
                         </td>
                         <td>
-                            <input type="date"  value="2018-07-22" ng-model="addData.PRODUCTION_YEAR" class="form-control" placeholder="Production Year" ng-required="true" required/>
+                            <input type="date"  value="2018-07-22" ng-model="addData.PRODUCTION_YEAR" class="year-control" placeholder="Production Year" ng-required="true" required/>
                         </td>
                         <td>
-                            <input type="text" ng-model="addData.COLOR" class="form-control" placeholder="Mileage" ng-required="true" required/>
+                            <input type="text" ng-model="addData.COLOR" class="form-control" placeholder="color" ng-required="true" required/>
                         </td>
                         <td>
                             <button type="submit" class="btn btn-success btn-sm" ng-disabled="testform.$invalid">Add</button>
@@ -57,7 +57,7 @@ if($_SESSION['cat']!= 'yeah') {
                 <td>{{data.COLOR}}</td>
                 <td>
                     <button type="button" class="btn btn-primary btn-sm" ng-click="showEdit(data)">Edit</button>
-                    <button type="button" class="btn btn-danger btn-sm" ng-click="deleteData(data.CAR_MODEL_ID)">Delete</button>
+                    <button type="button" class="btn btn-danger btn-sm" ng-click="deleteData(data.car_model_id)">Delete</button>
                 </td>
             </script>
             <script type="text/ng-template" id="edit">
@@ -74,7 +74,7 @@ if($_SESSION['cat']!= 'yeah') {
                     <input type="text" ng-model="formData.COLOR" class="form-control"/>
                 </td>
                 <td>
-                    <input type="hidden" ng-model="formData.data.CAR_MODEL_ID"/>
+                    <input type="hidden" ng-model="formData.data.car_model_id"/>
                     <button type="button" class="btn btn-info btn-sm" ng-click="editData()">Save</button>
                     <button type="button" class="btn btn-default btn-sm" ng-click="reset()">Cancel</button>
                 </td>
@@ -95,7 +95,7 @@ if($_SESSION['cat']!= 'yeah') {
             };
             $scope.formData = {};
             $scope.getTemplate = function (data) {
-                if (data.CAR_MODEL_ID === $scope.formData.CAR_MODEL_ID) {
+                if (data.car_model_id === $scope.formData.car_model_id) {
                     return 'edit';
                 } else {
                     return 'display';
@@ -146,14 +146,14 @@ if($_SESSION['cat']!= 'yeah') {
                 });
             };
 
-            $scope.deleteData = function(CAR_MODEL_ID)
+            $scope.deleteData = function(car_model_id)
             {
                 if(confirm("Are you sure you want to remove it?"))
                 {
                     $http({
                         method:"POST",
                         url:"car_model_mods/delete.php",
-                        data:{'CAR_MODEL_ID':CAR_MODEL_ID}
+                        data:{'car_model_id':car_model_id}
                     }).success(function(data){
                         $scope.success = true;
                         $scope.successMessage = data.message;

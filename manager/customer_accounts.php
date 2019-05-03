@@ -157,7 +157,7 @@ if($_SESSION['cat'] =! 'yeah'){
 
         app.controller('liveController', function ($scope, $http) {
             $scope.fetchData = function () {
-                $http.get('customer_mods/select.php').success(function (data) {
+                $http.post('customer_mods/select.php').success(function (data) {
                     $scope.namesData = data;
                 });
             };

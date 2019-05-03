@@ -1,13 +1,13 @@
 <?php
-if($_SESSION['cat'] =!'yeah'){
-    header("location: ../home.php?error=ever_felt_like_you_are_in_a_wrong_place?");
-    exit();
-};
+//if($_SESSION['cat'] =! 'yeah'|| isset($_SESSION['cat'])){
+//    header("location: ../index.php?error=ever_felt_like_you_are_in_a_wrong_place?");
+//    exit();
+//};
 require 'dbh.inc.php';
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-//include 'include/dbh.test.php';
+$error = "working after the connection";
 $message = '';
 $form_data = json_decode(file_get_contents("php://input"));
 $customer_id = $form_data->CUSTOMER_ID;
@@ -24,17 +24,28 @@ $state = $form_data -> CUSTOMER_STATE;
 $zip = $form_data -> CUSTOMER_ZIP;
 
 $error = "working after form_data";
-/*$employee_id = '49';
-$username = 'yolo';
-$pwd = '49';
-$employee_first_name = 'yolo';
-$employee_last_name ='yolo';*/
-//echo 'working after the variable<br>';
-//$data = array(
-//    ':first_name' => $form_data->CUSTOMER_FIRST_NAME,
-//    ':last_name' => $form_data->CUSTOMER_LAST_NAME,
-//    ':id' => $form_data->CUSTOMER_ID
-//);
+//if(empty($username)||empty($pwd)||empty($customer_first_name)||empty($customer_last_name)
+//    ||empty($dln)||empty($number)||empty($age)||empty($street)
+//    ||empty($city)||empty($state)||empty($zip)){
+//    exit();
+//}
+$password = hash('sha256',$password);
+//if (!preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$number)) {
+//    exit();
+//}
+//if (!preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$age)) {
+//    exit();
+//}
+//if (!preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$dln)) {
+//    exit();
+//}
+//if (!preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/",$zip)) {
+//    exit();
+//}
+//if (!preg_match('/^\w{5,}$/', $username)) {
+//    exit();
+//}
+$error = "working after the match";
 $statement = $conn->prepare("SELECT CUSTOMER_PWD FROM P_CUSTOMER WHERE CUSTOMER_ID=?");
 $statement->bind_param("i", $username);
 $statement->execute();
@@ -78,13 +89,20 @@ if ($result == $pwd) {
 //$statement->bind_result($result);
 //$statement->fetch();
 $output = array(
-//    'error' => $error,
+    'error' => $error,
     'message' => $message,
-//    'username' => $username,
-//    'password' => $pwd,
-//    'first name' => $employee_first_name,
-//    'last Name' => $employee_last_name,
-//    'id' => $employee_id
+    'id'=> $customer_id,
+    'username' => $username,
+    'password' => $pwd,
+    'first name' => $employee_first_name,
+    'last Name' => $employee_last_name,
+    'License'=> $dln,
+    'Phone_number'=>$number,
+    'age'=>$age,
+    'street'=>$street,
+    'city'=>$city,
+    'state'=>$state,
+    'zip'=>$zip
 );
 
 echo json_encode($output);

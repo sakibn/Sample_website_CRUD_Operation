@@ -47,8 +47,12 @@ require "header.php";
     <div class="main-wrapper">
         <h2 style="color: red">Home</h2
        //var_dump($_SESSION);
+            <?php
+                if(isset($_SESSION['username'])) {
+                    echo '<li><a href="reservation.php">Reservation Form</a></li>';
+                }
+            ?>
 
-                <li><a href="reservation.php">Reservation Form</a></li>
 
 
     </div>

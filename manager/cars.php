@@ -1,6 +1,6 @@
 <?php
 require "header_footer/header.php";
-if($_SESSION['cat']!= "yeah") {
+if($_SESSION['cat']!= "yeah" ) {
     header("location: ../index.php?error=wrong_place_yeah");
 //    var_dump($_SESSION);
     exit();

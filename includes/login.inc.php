@@ -55,9 +55,11 @@ if (isset($_POST['login-submit'])) {
         if ($hash == $data[1]["EMPLOYEE_PWD"]) {
 //            echo "verified";
             session_start();
+            unregister_GLOBALS();
             $_SESSION['username'] = $uid;
             $_SESSION['dog'] = $data[1]["ROLE"];
             $_SESSION['cat'] = 'yeah';
+
 //            $_SESSION['role'] =$role;
 //            $_SESSION['userId'] = $row['USER_ID'];
 //            if(isset($_SESSION['dog'])&& $_SESSION['dog']==67) {
@@ -85,6 +87,7 @@ if (isset($_POST['login-submit'])) {
             if ($hash == $result) {
 //                echo "verified";
                 session_start();
+                unregister_GLOBALS();
                 $_SESSION['username'] = $uid;
                 $timeout=60;
                 setcookie("chair",$_SESSION['username'],time()+$timeout,"/",NULL);
@@ -111,10 +114,37 @@ if (isset($_POST['login-submit'])) {
     exit();
 }
 
-function login_redirect($uid)
+// Emulate register_globals off
+function unregister_GLOBALS()
 {
+    if (!ini_get('register_globals')) {
+        return;
+    }
 
+    // Might want to change this perhaps to a nicer error
+    if (isset($_REQUEST['GLOBALS']) || isset($_FILES['GLOBALS'])) {
+        die('GLOBALS overwrite attempt detected');
+    }
+
+    // Variables that shouldn't be unset
+    $noUnset = array('GLOBALS',  '_GET',
+        '_POST',    '_COOKIE',
+        '_REQUEST', '_SERVER',
+        '_ENV',     '_FILES');
+
+    $input = array_merge($_GET,    $_POST,
+        $_COOKIE, $_SERVER,
+        $_ENV,    $_FILES,
+        isset($_SESSION) && is_array($_SESSION) ? $_SESSION : array());
+
+    foreach ($input as $k => $v) {
+        if (!in_array($k, $noUnset) && isset($GLOBALS[$k])) {
+            unset($GLOBALS[$k]);
+        }
+    }
 }
+
+
 
 function test_input($data)
 {
