@@ -1,7 +1,7 @@
 <?php
 require "header_footer/header.php";
-if($_SESSION['cat'] =! 'yeah'){
-    header("location: ../index.php?error=ever_felt_like_you_are_in_a_wrong_place?");
+if($_SESSION['dog'] =!67 ||   !isset($_SESSION['username'])){
+    header("location: home.php?error=ever_felt_like_you_are_in_a_wrong_place?");
     exit();
 };
 ?>
